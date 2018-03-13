@@ -1,7 +1,5 @@
 {
-// "run_list": [ "recipe[java]", "recipe[jboss7]" ]
-//  "run_list": [ "recipe[mycookbook]"]
-//    "run_list": ["recipe[jboss7::default]" ]
-     "run_list": ["recipe[myapache]", "role[java]"]
+      "run_list": ["role[java]","recipe[jboss7]"]
+
 }
 
