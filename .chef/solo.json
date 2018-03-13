@@ -1,5 +1,5 @@
 {
-      "run_list": ["role[java]","recipe[jboss7]"]
+     "run_list": ["recipe[myapache]","role[java]","recipe[jboss7]"]
 
 }
 
