@@ -1,7 +1,7 @@
 #node['default'].hadoop.version                = "2.4.0"
 
 # Default values for configuration parameters
-default['kagent']['version']                = "0.1.3"
+default['kagent']['version']                = "0.1.0"
 default['kagent']['user']                   = "kagent"
 default['kagent']['group']                  = node['kagent']['user']   
 default['kagent']['certs_group']            = "certs"

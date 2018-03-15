@@ -18,7 +18,7 @@ module Kagent
 
 
     def my_private_ip()
-      node.private_ips[0]
+      node['private_ips'][0]
     end
 
     def valid_cookbook(cookbook)
@@ -157,7 +157,7 @@ module Kagent
       end
       # Remove the last ','
       connectString = connectString.chop
-      node.normal.ndb.connectstring = connectString
+      node.normal['ndb']['connectstring'] = connectString
     end
     
     def jdbc_url()
@@ -165,10 +165,10 @@ module Kagent
       # On failure, contact other mysqlds. We should configure
       # the mysqlconnector to use the first localhost and only failover
       # to other mysqlds
-      jdbcUrl = "localhost:#{node.ndb.mysql_port},"
-      for n in node.ndb.mysqld.private_ips
+      jdbcUrl = "localhost:#{node['ndb']['mysql_port']},"
+      for n in node['ndb']['mysqld']['private_ips']
         fqdn = dns_lookup(n)
-        jdbcUrl += "#{fqdn}:#{node.ndb.mysql_port},"
+        jdbcUrl += "#{fqdn}:#{node['ndb']['mysql_port']},"
       end
       jdbcUrl = jdbcUrl.chop
       node.normal.ndb.mysql.jdbc_url = "jdbc:mysql://" + jdbcUrl + "/"
