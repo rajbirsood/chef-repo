@@ -1,0 +1,8 @@
+dependencies: 
+  - recipe: kagent::default
+    global:  
+      - hopsworks::default
+      - kafka::default
+      - epipe::default
+      - livy::default
+      - drelephant::default

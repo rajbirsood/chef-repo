@@ -1,0 +1,2319 @@
+-----> Starting Kitchen (v1.10.0)
+-----> Creating <default-ubuntu-1404>...
+       Bringing machine 'default' up with 'virtualbox' provider...
+       ==> default: Importing base box 'bento/ubuntu-14.04'...
+       [KProgress: 10%[KProgress: 20%[KProgress: 30%[KProgress: 40%[KProgress: 50%[KProgress: 60%[KProgress: 70%[KProgress: 80%[KProgress: 90%[K==> default: Matching MAC address for NAT networking...
+       ==> default: Checking if box 'bento/ubuntu-14.04' is up to date...
+       ==> default: Setting the name of the VM: kitchen-kagent-chef-default-ubuntu-1404_default_1472335188308_87434
+       ==> default: Fixed port collision for 22 => 2222. Now on port 2200.
+       ==> default: Clearing any previously set network interfaces...
+       ==> default: Preparing network interfaces based on configuration...
+           default: Adapter 1: nat
+       ==> default: Forwarding ports...
+           default: 22 (guest) => 2200 (host) (adapter 1)
+       ==> default: Running 'pre-boot' VM customizations...
+       ==> default: Booting VM...
+       ==> default: Waiting for machine to boot. This may take a few minutes...
+           default: SSH address: 127.0.0.1:2200
+           default: SSH username: vagrant
+           default: SSH auth method: private key
+           default: 
+           default: Vagrant insecure key detected. Vagrant will automatically replace
+           default: this with a newly generated keypair for better security.
+           default: 
+           default: Inserting generated public key within guest...
+           default: Removing insecure key from the guest if it's present...
+           default: Key inserted! Disconnecting and reconnecting using new SSH key...
+       ==> default: Machine booted and ready!
+       ==> default: Checking for guest additions in VM...
+           default: The guest additions on this VM do not match the installed version of
+           default: VirtualBox! In most cases this is fine, but in rare cases it can
+           default: prevent things such as shared folders from working properly. If you see
+           default: shared folder errors, please make sure the guest additions within the
+           default: virtual machine match the version of VirtualBox you have installed on
+           default: your host and reload your VM.
+           default: 
+           default: Guest Additions Version: 5.0.26
+           default: VirtualBox Version: 4.3
+       ==> default: Setting hostname...
+       ==> default: Machine not provisioned because `--no-provision` is specified.
+       [SSH] Established
+       Vagrant instance <default-ubuntu-1404> created.
+       Finished creating <default-ubuntu-1404> (0m55.72s).
+-----> Converging <default-ubuntu-1404>...
+       Preparing files for transfer
+       Preparing dna.json
+       Resolving cookbook dependencies with Berkshelf 4.3.5...
+       Removing non-cookbook files before transfer
+       Preparing solo.rb
+-----> Installing Chef Omnibus (install only if missing)
+       Downloading https://omnitruck.chef.io/install.sh to file /tmp/install.sh
+       Trying wget...
+       Download complete.
+       ubuntu 14.04 x86_64
+       Getting information for chef stable  for ubuntu...
+       downloading https://omnitruck.chef.io/stable/chef/metadata?v=&p=ubuntu&pv=14.04&m=x86_64
+         to file /tmp/install.sh.1129/metadata.txt
+       trying wget...
+       sha1	72a0a10ba5684d1e51590c1bc022bcb2e99348c6
+       sha256	973c2bc9a84822158ba7c0c360d0a25c97420f293ccbe5d8019615a411460785
+       url	https://packages.chef.io/stable/ubuntu/14.04/chef_12.13.37-1_amd64.deb
+       version	12.13.37
+       downloaded metadata file looks valid...
+       downloading https://packages.chef.io/stable/ubuntu/14.04/chef_12.13.37-1_amd64.deb
+         to file /tmp/install.sh.1129/chef_12.13.37-1_amd64.deb
+       trying wget...
+       Comparing checksum with sha256sum...
+       
+       WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+       
+       You are installing an omnibus package without a version pin.  If you are installing
+       on production servers via an automated process this is DANGEROUS and you will
+       be upgraded without warning on new releases, even to new major releases.
+       Letting the version float is only appropriate in desktop, test, development or
+       CI/CD environments.
+       
+       WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+       
+       Installing chef 
+       installing with dpkg...
+       Selecting previously unselected package chef.
+       (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 32949 files and directories currently installed.)
+       Preparing to unpack .../chef_12.13.37-1_amd64.deb ...
+       Unpacking chef (12.13.37-1) ...
+       Setting up chef (12.13.37-1) ...
+       Thank you for installing Chef!
+       Transferring files to <default-ubuntu-1404>
+       Starting Chef Client, version 12.13.37
+       Creating a new client identity for default-ubuntu-1404 using the validator key.
+       resolving cookbooks for run list: ["kagent::install", "kagent::default"]
+       Synchronizing Cookbooks:
+         - kagent (0.1.2)
+         - poise-python (1.4.0)
+         - openssl (4.4.0)
+         - sudo (2.11.0)
+         - hostsfile (2.4.5)
+         - ntp (2.0.0)
+         - poise (2.7.1)
+         - poise-languages (1.4.0)
+         - chef-sugar (3.4.0)
+         - windows (1.44.3)
+         - poise-archive (1.3.0)
+         - chef_handler (1.4.0)
+       Installing Cookbook Gems:
+       Compiling Cookbooks...
+       [2016-08-27T22:03:21+00:00] ERROR: Invalid cookbook/recipe name: hopsworks/default
+       [2016-08-27T22:03:21+00:00] WARN: could not find the hopsworks server ip to register kagent to!
+       Converging 56 resources
+       Recipe: kagent::install
+         * bash[apt_update_install_build_tools] action run
+           - execute "bash"  "/tmp/chef-script20160827-1221-cqm6ih"
+       Recipe: poise-python::default
+         * python_runtime[2] action install
+           * poise_languages_system[python2.7] action install
+             - install version 2.7.6-8ubuntu0.2 of package python2.7-dev
+         
+         * python_runtime_pip[2] action install
+           - Bootstrapping pip latest from https://bootstrap.pypa.io/get-pip.py
+         * python_package[setuptools] action install
+           - install version 26.0.0 of package setuptools
+         * python_package[wheel] action install
+           - install version 0.29.0 of package wheel
+         * python_package[virtualenv] action install
+           - install version 15.0.3 of package virtualenv
+       
+       Recipe: kagent::install
+         * group[kagent] action create
+           - create group kagent
+         * group[certs] action create
+           - create group certs
+         * user[kagent] action create
+           - create user kagent
+         * group[kagent] action modify
+           - modify group kagent
+           - add missing member(s): kagent
+         * group[certs] action modify
+           - modify group certs
+           - add missing member(s): kagent
+         * cookbook_file[/tmp/inifile-2.0.2.gem] action create_if_missing
+           - create new file /tmp/inifile-2.0.2.gem
+           - update content in file /tmp/inifile-2.0.2.gem from none to 454c96
+           (new content is binary, diff output suppressed)
+           - change mode from '' to '0755'
+           - change owner from '' to 'kagent'
+           - change group from '' to 'kagent'
+         * cookbook_file[/tmp/requests-1.0.3.tar.gz] action create_if_missing
+           - create new file /tmp/requests-1.0.3.tar.gz
+           - update content in file /tmp/requests-1.0.3.tar.gz from none to c7b50d
+           (new content is binary, diff output suppressed)
+           - change mode from '' to '0755'
+           - change owner from '' to 'kagent'
+           - change group from '' to 'kagent'
+         * cookbook_file[/tmp/bottle-0.11.4.tar.gz] action create_if_missing
+           - create new file /tmp/bottle-0.11.4.tar.gz
+           - update content in file /tmp/bottle-0.11.4.tar.gz from none to ec21d1
+           (new content is binary, diff output suppressed)
+           - change mode from '' to '0755'
+           - change owner from '' to 'kagent'
+           - change group from '' to 'kagent'
+         * cookbook_file[/tmp/CherryPy-3.2.2.tar.gz] action create
+           - create new file /tmp/CherryPy-3.2.2.tar.gz
+           - update content in file /tmp/CherryPy-3.2.2.tar.gz from none to dc5a88
+           (new content is binary, diff output suppressed)
+           - change mode from '' to '0755'
+           - change owner from '' to 'kagent'
+           - change group from '' to 'kagent'
+         * cookbook_file[/tmp/pyOpenSSL-0.13.tar.gz] action create_if_missing
+           - create new file /tmp/pyOpenSSL-0.13.tar.gz
+           - update content in file /tmp/pyOpenSSL-0.13.tar.gz from none to 21e12b
+           (new content is binary, diff output suppressed)
+           - change mode from '' to '0755'
+           - change owner from '' to 'kagent'
+           - change group from '' to 'kagent'
+         * apt_package[python-mysqldb] action install
+           - install version 1.2.3-2ubuntu1 of package python-mysqldb
+         * cookbook_file[/tmp/netifaces-0.8.tar.gz] action create_if_missing
+           - create new file /tmp/netifaces-0.8.tar.gz
+           - update content in file /tmp/netifaces-0.8.tar.gz from none to 53a711
+           (new content is binary, diff output suppressed)
+           - change mode from '' to '0755'
+           - change owner from '' to 'kagent'
+           - change group from '' to 'kagent'
+         * cookbook_file[/tmp/IPy-0.81.tar.gz] action create_if_missing
+           - create new file /tmp/IPy-0.81.tar.gz
+           - update content in file /tmp/IPy-0.81.tar.gz from none to 4bc17a
+           (new content is binary, diff output suppressed)
+           - change mode from '' to '0755'
+           - change owner from '' to 'kagent'
+           - change group from '' to 'kagent'
+         * cookbook_file[/tmp/pexpect-2.3.tar.gz] action create_if_missing
+           - create new file /tmp/pexpect-2.3.tar.gz
+           - update content in file /tmp/pexpect-2.3.tar.gz from none to d315e7
+           (new content is binary, diff output suppressed)
+           - change mode from '' to '0755'
+           - change owner from '' to 'kagent'
+           - change group from '' to 'kagent'
+         * bash[install_python] action run
+           - execute "bash"  "/tmp/chef-script20160827-1221-1sa321p"
+         * bash[make_gemrc_file] action run
+           - execute "bash"  "/tmp/chef-script20160827-1221-1ga5szs"
+         * gem_package[inifile] action install
+           - install version 2.0.2 of package inifile
+         * directory[/var/lib/kagent-0.1.0] action create
+           - create new directory /var/lib/kagent-0.1.0
+           - change mode from '' to '0755'
+           - change owner from '' to 'kagent'
+           - change group from '' to 'kagent'
+         * directory[/var/lib/kagent-certs] action create
+           - create new directory /var/lib/kagent-certs
+           - change mode from '' to '0750'
+           - change owner from '' to 'kagent'
+           - change group from '' to 'certs'
+         * link[/var/lib/kagent] action delete (skipped due to only_if)
+         * link[/var/lib/kagent] action create
+           - create symlink at /var/lib/kagent to /var/lib/kagent-0.1.0
+           - change owner from '' to 'kagent'
+           - change group from '' to 'kagent'
+         * directory[/var/lib/kagent/bin] action create
+           - create new directory /var/lib/kagent/bin
+           - change mode from '' to '0755'
+           - change owner from '' to 'kagent'
+           - change group from '' to 'kagent'
+         * directory[/var/lib/kagent/tf] action create
+           - create new directory /var/lib/kagent/tf
+           - change mode from '' to '0755'
+           - change owner from '' to 'kagent'
+           - change group from '' to 'kagent'
+         * directory[/var/lib/kagent/tf/projects] action create
+           - create new directory /var/lib/kagent/tf/projects
+           - change mode from '' to '0755'
+           - change owner from '' to 'kagent'
+           - change group from '' to 'kagent'
+         * directory[/var/lib/kagent/tf/run] action create
+           - create new directory /var/lib/kagent/tf/run
+           - change mode from '' to '0755'
+           - change owner from '' to 'kagent'
+           - change group from '' to 'kagent'
+         * directory[/var/lib/kagent/tf/log] action create
+           - create new directory /var/lib/kagent/tf/log
+           - change mode from '' to '0755'
+           - change owner from '' to 'kagent'
+           - change group from '' to 'kagent'
+         * directory[/var/lib/kagent-certs/keystores] action create
+           - create new directory /var/lib/kagent-certs/keystores
+           - change mode from '' to '0755'
+           - change owner from '' to 'kagent'
+           - change group from '' to 'kagent'
+         * file[/var/lib/kagent/services] action create_if_missing
+           - create new file /var/lib/kagent/services
+           - change mode from '' to '0755'
+           - change owner from '' to 'kagent'
+           - change group from '' to 'kagent'
+         * file[/var/lib/kagent/tf_services] action create_if_missing
+           - create new file /var/lib/kagent/tf_services
+           - change mode from '' to '0755'
+           - change owner from '' to 'kagent'
+           - change group from '' to 'kagent'
+         * hostsfile_entry[10.0.2.15] action create
+         Recipe: <Dynamically Defined Resource>
+           * file[/etc/hosts] action create
+             - update content in file /etc/hosts from d3a30b to 57c971
+             --- /etc/hosts	2016-08-27 22:00:21.240758390 +0000
+             +++ /etc/.chef-hosts20160827-1221-1bi760g	2016-08-27 22:04:32.374666126 +0000
+             @@ -1,7 +1,16 @@
+             -127.0.0.1	default-ubuntu-1404	default-ubuntu-1404
+             +#
+             +# This file is managed by Chef, using the hostsfile cookbook.
+             +# Editing this file by hand is highly discouraged!
+             +#
+             +# Comments containing an @ sign should not be modified or else
+             +# hostsfile will be unable to guarantee relative priority in
+             +# future Chef runs!
+             +#
+             +
+       127.0.0.1	localhost
+             -127.0.1.1	vagrant.vm	vagrant
+             -::1     localhost ip6-localhost ip6-loopback
+             -ff02::1 ip6-allnodes
+             -ff02::2 ip6-allrouters
+             +127.0.1.1	vagrant.vm vagrant
+             +10.0.2.15	default-ubuntu-1404
+             +ff02::1	ip6-allnodes
+             +ff02::2	ip6-allrouters
+             +::1	localhost ip6-localhost ip6-loopback
+           - Create hostsfile_entry[10.0.2.15]
+       Recipe: kagent::install
+         * hostsfile_entry[10.0.2.15] action create (up to date)
+         * template[/var/lib/kagent/agent.py] action create
+           - create new file /var/lib/kagent/agent.py
+           - update content in file /var/lib/kagent/agent.py from none to 292c2d
+           --- /var/lib/kagent/agent.py	2016-08-27 22:04:32.386660127 +0000
+           +++ /var/lib/kagent/.chef-agent.py20160827-1221-l4vqqk	2016-08-27 22:04:32.386660127 +0000
+           @@ -1 +1,959 @@
+           +#!/usr/bin/env python
+           +
+           +'''
+           +Created on 6 October 2013
+           +
+           +@author: Hamidreza Afzali <afzali@kth.se>
+           +@author: Jim Dowling <jdowling@kth.se>
+           +
+           +Install:
+           + requests:    easy_install requests
+           + bottle:      easy_install bottle
+           + Cherrypy:    easy_install cherrypy
+           + Netifaces:   easy_install netifaces
+           + IPy:         easy_install ipy
+           + pyOpenSSL:   apt-get install python-openssl 
+           + MySQLdb:     apt-get install python-mysqldb
+           + pexpect:     apt-get install python-pexpect
+           +'''
+           +
+           +import time
+           +from time import sleep
+           +from datetime import datetime
+           +import multiprocessing
+           +import thread
+           +from threading import Lock
+           +import threading
+           +import subprocess
+           +from subprocess import Popen
+           +import os
+           +import sys
+           +import ConfigParser
+           +import requests
+           +import logging.handlers
+           +import json 
+           +from OpenSSL import crypto
+           +import socket
+           +from os.path import exists, join
+           +import MySQLdb
+           +from bottle import Bottle, run, get, post, request, HTTPResponse, server_names, ServerAdapter
+           +import netifaces 
+           +from IPy import IP
+           +import pexpect
+           +import re
+           +
+           +global mysql_process
+           +mysql_process = None
+           +var="~#@#@!#@!#!@#@!#"
+           +
+           +config_mutex = Lock()
+           +
+           +HTTP_OK = 200
+           +
+           +BIN_DIR = "/var/lib/kagent/bin"
+           +CONFIG_FILE = "/var/lib/kagent/config.ini"
+           +SERVICES_FILE = "/var/lib/kagent/services"
+           +TF_SERVICES_FILE = "/var/lib/kagent/tf_services"
+           +LOG_FILE = "/var/lib/kagent/agent.log"
+           +
+           +CERT_FILE = "/var/lib/kagent-certs/pub.pem"
+           +CA_FILE = "/var/lib/kagent-certs/ca_pub.pem"
+           +KEY_FILE = "/var/lib/kagent-certs/priv.key"
+           +SERVER_KEYSTORE = "/var/lib/kagent-certs/keystores/node_server_keystore.jks"
+           +SERVER_TRUSTSTORE = "/var/lib/kagent-certs/keystores/node_server_truststore.jks"
+           +CLIENT_TRUSTSTORE = "/var/lib/kagent-certs/keystores/node_client_truststore.jks"
+           +
+           +global states
+           +states = {}
+           +
+           +cores = multiprocessing.cpu_count()
+           +
+           +# reading config
+           +try:
+           +    config = ConfigParser.ConfigParser()
+           +    config.read(CONFIG_FILE)
+           +    server_url = config.get('server', 'url')
+           +    login_url = server_url + config.get('server', 'path-login')
+           +    register_url = server_url + config.get('server', 'path-register')
+           +    heartbeat_url = server_url + config.get('server', 'path-heartbeat')
+           +    alert_url = server_url + config.get('server', 'path-alert')
+           +            
+           +    server_username = config.get('server', 'username')
+           +    server_password = config.get('server', 'password')
+           +    
+           +    logging_level = config.get('agent', 'logging-level').upper()
+           +    max_log_size = config.getint('agent', 'max-log-size')    
+           +    user = config.get('agent', 'username')
+           +    password = config.get('agent', 'password')          
+           +    agent_pidfile = config.get('agent', 'pid-file')
+           +    agent_restport = config.getint('agent', 'restport')
+           +    heartbeat_interval = config.getfloat('agent', 'heartbeat-interval')
+           +    watch_interval = config.getfloat('agent', 'watch-interval')
+           +    mysql_socket = config.get('agent', 'mysql-socket')          
+           +    network_interface = config.get('agent', 'network-interface')          
+           +    group_name = config.get('agent', 'group-name')          
+           +
+           +    group_name = config.get('agent', 'group-name')
+           +
+           +# TODO find public/private IP addresses 
+           +    public_ip = None
+           +    private_ip = None 
+           +    eth0_ip = netifaces.ifaddresses(network_interface)[netifaces.AF_INET][0]['addr'] 
+           +    if (IP(eth0_ip).iptype() == "PUBLIC"):
+           +        public_ip = eth0_ip
+           +    else:
+           +        private_ip = eth0_ip
+           +    
+           +    if (config.has_option("agent", "hostname")):
+           +        hostname = config.get("agent", "hostname")
+           +    else:
+           +        hostname = socket.gethostbyaddr(eth0_ip)[0]
+           +        
+           +    if (config.has_option("agent", "host-id")):
+           +        host_id = config.get("agent", "host-id")
+           +    else:
+           +        host_id = hostname
+           +
+           +    
+           +except Exception, e:
+           +    print "Exception while reading {0}: {1}".format(CONFIG_FILE, e)
+           +    sys.exit(1)
+           +
+           +# logging
+           +try:
+           +    os.remove(LOG_FILE + '.1')
+           +except:
+           +    pass    
+           +with open(LOG_FILE, 'w'):  # clear log file
+           +    pass
+           +logger = logging.getLogger('agent')
+           +logger_formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
+           +logger_file_handler = logging.handlers.RotatingFileHandler(LOG_FILE, "w", maxBytes=max_log_size, backupCount=1)
+           +logger_stream_handler = logging.StreamHandler()
+           +logger_file_handler.setFormatter(logger_formatter)
+           +logger_stream_handler.setFormatter(logger_formatter)
+           +logger.addHandler(logger_file_handler)
+           +logger.addHandler(logger_stream_handler)
+           +logger.setLevel(logging.INFO)
+           +
+           +logger.info("Hops-Kagent started.")
+           +logger.info("Heartbeat URL: {0}".format(heartbeat_url))
+           +logger.info("Alert URL: {0}".format(alert_url))
+           +logger.info("Host Id: {0}".format(host_id))
+           +logger.info("Hostname: {0}".format(hostname))
+           +logger.info("Public IP: {0}".format(public_ip))
+           +logger.info("Private IP: {0}".format(private_ip))
+           +
+           +verbose=False
+           +
+           +# reading services
+           +try:
+           +    services = ConfigParser.ConfigParser()
+           +    services.read(SERVICES_FILE)
+           +
+           +    for s in services.sections():
+           +        if services.has_option(s, "role") :        
+           +            states[services.get(s, "role")] = {'status':'Stopped', 'start-time':''}
+           +
+           +# TODO - for loop to see if there are running tensorflow  programs. Updates states to reflect situation.
+           +except Exception, e:
+           +    logger.error("Exception while reading {0} file: {1}".format(SERVICES_FILE, e))
+           +    sys.exit(1)     
+           +
+           +try:
+           +    tf_services = ConfigParser.ConfigParser()
+           +    tf_services.read(TF_SERVICES_FILE)
+           +    for s in services.sections():
+           +        if services.has_option(s, "id") :        
+           +            states[services.get(s, "id")] = {'status':'Free', 'start-time':''}
+           +except Exception, e:
+           +    logger.error("Exception while reading {0} file: {1}".format(TF_SERVICES_FILE, e))
+           +    sys.exit(1)     
+           +
+           +
+           +loggedIn = False
+           + 
+           +class Util():
+           +    
+           +    def logging_level(self, level):
+           +        return {
+           +                'INFO': logging.INFO,
+           +                'WARN': logging.WARN,
+           +                'WARNING': logging.WARNING,
+           +                'ERROR': logging.ERROR,
+           +                'DEBUG' : logging.DEBUG,
+           +                'CRITICAL': logging.CRITICAL,
+           +                }.get(level, logging.NOTSET)
+           +
+           +    @staticmethod
+           +    def tail(file_name, n):
+           +        stdin, stdout = os.popen2("tail -n {0} {1}".format(n, file_name))
+           +        stdin.close()
+           +        lines = stdout.readlines(); 
+           +        stdout.close()
+           +        log = "".join(str(x) for x in lines)
+           +        return log
+           +
+           +
+           +class Heartbeat():
+           +    daemon_threads = True 
+           +    def __init__(self):
+           +        while True:    
+           +            Heartbeat.send()
+           +            time.sleep(heartbeat_interval) 
+           +
+           +
+           +    @staticmethod
+           +    def login():
+           +        json_headers = {'User-Agent': 'Agent', 'content-type': 'application/json'}
+           +        form_headers = {'User-Agent': 'Agent', 'content-type': 'application/x-www-form-urlencoded'}
+           +        payload = {}
+           +        global loggedIn
+           +        global session
+           +        try:
+           +            session = requests.Session()
+           +            resp = session.post(login_url, data={'email': server_username, 'password': server_password}, headers=form_headers, verify=False)
+           +#            resp = session.put(register_url, data=json.dumps(payload), headers=json_headers, verify=False)
+           +            if not resp.status_code == HTTP_OK:
+           +                loggedIn = False
+           +                logger.warn('Could not login agent to Hopsworks (Status code: {0}).'.format(resp.status_code))
+           +            else:
+           +                logger.info('Successful login of agent to Hopsworks (Status code: {0}).'.format(resp.status_code))
+           +                loggedIn = True
+           +        except Exception as err:
+           +            logger.warn('Could not login agent to Hopsworks {0}'.format(err))
+           +            loggedIn = False
+           +
+           +    @staticmethod
+           +    def serviceKey(*keys):
+           +            ob = states
+           +            for key in keys:
+           +                ob = ob[key]
+           +            return ob
+           +
+           +    @staticmethod
+           +    def send():
+           +        global loggedIn
+           +        global session
+           +        if not loggedIn:
+           +           logger.info('Logging in to Hopsworks....')
+           +           Heartbeat.login()
+           +        else:
+           +            try:
+           +                disk_info = DiskInfo() 
+           +                memory_info = MemoryInfo()
+           +                load_info = LoadInfo()
+           +                services_list = Config().read_all_for_heartbeat()
+           +                now = long(time.mktime(datetime.now().timetuple()))                
+           +                headers = {'content-type': 'application/json'}
+           +                payload = {}
+           +                payload["host-id"] = host_id            
+           +                payload["agent-time"] = now
+           +                payload["load1"] = load_info.load1
+           +                payload["load5"] = load_info.load5
+           +                payload["load15"] = load_info.load15
+           +                payload["disk-used"] = disk_info.used
+           +                payload['memory-used'] = memory_info.used - memory_info.cached - memory_info.buffers
+           +                payload["services"] = services_list            
+           +                payload["group-name"] = group_name
+           +                payload["hostname"] = hostname
+           +
+           +                if (public_ip != None):
+           +                    payload["public-ip"] = public_ip                      
+           +                else:
+           +                    payload["public-ip"] = ""
+           +
+           +                if (private_ip != None):
+           +                    payload["private-ip"] = private_ip 
+           +                else:
+           +                    payload["private-ip"] = ""
+           +
+           +                payload["cores"] = cores
+           +                payload["disk-capacity"] = disk_info.capacity    
+           +                payload['memory-capacity'] = memory_info.total                            
+           +                logger.info("Sending heartbeat...")
+           +                resp = session.post(heartbeat_url, data=json.dumps(payload), headers=headers, verify=False)
+           +                if not resp.status_code == HTTP_OK:
+           +                    raise Exception('Heartbeat could not be sent (Status code: {0})'.format(resp.status_code))
+           +                    loggedIn = False
+           +            except Exception as err:
+           +                logger.error("{0}. Retrying in {1} seconds...".format(err, heartbeat_interval))
+           +                loggedIn = False
+           +
+           +
+           +class Alert:
+           +    @staticmethod    
+           +    def send(cluster, service, role, time, status):
+           +        global session
+           +        try:
+           +            headers = {'content-type': 'application/json'}
+           +            payload = {}
+           +            payload["Provider"] = "Agent"            
+           +            payload["host-id"] = host_id
+           +            payload["Time"] = time
+           +            payload["Plugin"] = "Monitoring"
+           +            payload["Type"] = "Role"
+           +            payload["TypeInstance"] = "{0}/{1}/{2}".format(cluster, service, role)
+           +            payload["DataSource"] = "Agent"
+           +            payload["CurrentValue"] = status
+           +            if status == True:
+           +                payload["Severity"] = "OK"
+           +                payload["Message"] = "Role is running: {0}/{1}/{2}".format(cluster, service, role)
+           +            else:
+           +                payload["Severity"] = "FAILURE"
+           +                payload["Message"] = "Role is not running: {0}/{1}/{2}".format(cluster, service, role)
+           +            
+           +            logger.info("Sending Alert...")
+           +            auth = (server_username, server_password)
+           +#            session = requests.Session()
+           +#            session.post(alert_url, data=json.dumps(payload), headers=headers, auth=auth, verify=False)        
+           +            requests.post(alert_url, data=json.dumps(payload), headers=headers, auth=auth, verify=False)        
+           +        except:
+           +            logger.error("Cannot access the REST service for alerts. Alert not sent.")
+           +
+           +            
+           +class MemoryInfo(object):
+           +    def __init__(self):
+           +        process = subprocess.Popen("free", shell=True, stdout=subprocess.PIPE)
+           +        stdout_list = process.communicate()[0].split('\n')
+           +        for line in stdout_list:
+           +            data = line.split()
+           +            try:
+           +                if data[0] == "Mem:":
+           +                    self.total = int(data[1]) * 1024
+           +                    self.used = int(data[2]) * 1024
+           +                    self.free = int(data[3]) * 1024
+           +                    self.buffers = int(data[5]) * 1024
+           +                    self.cached = int(data[6]) * 1024
+           +                    break
+           +            except IndexError:
+           +                continue
+           +
+           +
+           +class DiskInfo(object):
+           +    def __init__(self):
+           +        disk = os.statvfs("/")
+           +        self.capacity = disk.f_bsize * disk.f_blocks
+           +        self.used = disk.f_bsize * (disk.f_blocks - disk.f_bavail)
+           +
+           +
+           +class LoadInfo(object):
+           +    def __init__(self):
+           +        self.load1 = os.getloadavg()[0]
+           +        self.load5 = os.getloadavg()[1]
+           +        self.load15 = os.getloadavg()[2]
+           +        
+           +
+           +class ExtProcess():  # external process
+           +        
+           +    @staticmethod        
+           +    def watch(cluster, service, role):
+           +        while True:
+           +            try:
+           +                section = Config().section_name(cluster, service, role)
+           +                if Service().alive(cluster,service,role) == True:
+           +                     if (states[role]['status'] == 'Stopped'):
+           +                       logger.info("Process started: {0}/{1}/{2}".format(cluster, service, role))
+           +                       Service().started(cluster, service, role)
+           +                else:
+           +                    raise Exception("Process is not running for {0}/{1}/{2}".format(cluster, service, role))
+           +            except:  
+           +                logger.warn("Proccess.watch: Process is not running: {0}/{1}/{2}".format(cluster, service, role))
+           +                if (states[role]['status'] == 'Started'):
+           +                    logger.info("Process failed: {0}/{1}/{2}".format(cluster, service, role))
+           +                    Service().failed(cluster, service, role)
+           +            sleep(watch_interval)
+           +
+           +class Config(): 
+           +
+           +    def section_name(self, cluster, service, role=None):
+           +        if role == None:
+           +            return "{0}-{1}".format(cluster, service)
+           +        else:
+           +            return "{0}-{1}-{2}".format(cluster, service, role)   
+           +        
+           +    # select items so that the key does not contain 'file' or 'script'
+           +    def read_all_for_heartbeat(self):
+           +        config_mutex.acquire()       
+           +        services_list = []     
+           +        try:
+           +            for s in services.sections():
+           +                   item = {}
+           +                   item['status'] = Heartbeat.serviceKey(services.get(s, "role"), 'status')
+           +                   services_list.append(item)   
+           +                   for key, val in services.items(s):
+           +                       if (not 'file' in key) and (not 'script' in key) and (not 'command' in key):
+           +                           item[key] = val
+           +                       services_list.append(item)                
+           +        finally:
+           +            config_mutex.release()
+           +        return services_list
+           +        
+           +    def get_section(self, section):
+           +        config_mutex.acquire()
+           +        items = {}
+           +        try:
+           +            for key, val in services.items(section):
+           +                items[key] = val
+           +        finally:
+           +            config_mutex.release()
+           +        return items
+           +    
+           +    def get(self, section, option):
+           +        config_mutex.acquire()
+           +        val = ""
+           +        try:         
+           +            val = services.get(section, option)
+           +        finally:
+           +            config_mutex.release()
+           +        return val                
+           +
+           +     
+           +class Service:
+           +    
+           +    # need to be completed. Set the status to Initialize?
+           +    def init(self, cluster, service, role):
+           +        section = Config().section_name(cluster, service, role)
+           +        script = Config().get(section, "init-script")
+           +        try:
+           +            p = Popen(script, shell=True, close_fds=True)
+           +            p.wait()
+           +            returncode = p.returncode
+           +            if not returncode == 0:
+           +                raise Exception("Init script returned a none-zero value")
+           +            return True
+           +        except Exception as err:
+           +            logger.error(err)
+           +            return False
+           +
+           +            
+           +    def start(self, cluster, service, role):
+           +        script = BIN_DIR + "/start-service.sh"
+           +        try:
+           +            p = Popen(['sudo',script,role],stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+           +            (output,err)=p.communicate()
+           +            returncode = p.wait()
+           +            logger.info("{0}".format(output))
+           +            if not returncode == 0:
+           +                raise Exception("Start script returned a none-zero value")
+           +            Service().started(cluster, service, role)
+           +            # wait for the alert to get returned to Hopsworks, before returning (as this will cause a correct refresh of the service's status)
+           +            sleep(heartbeat_interval+1)
+           +            return True
+           +        except Exception as err:
+           +            logger.error(err)
+           +            return False
+           +        
+           +    def stop(self, cluster, service, role):
+           +        script = BIN_DIR + "/stop-service.sh"
+           +        try:
+           +            subprocess.check_call(['sudo', script, role], close_fds=True)  # raises exception if not returncode == 0
+           +            now = long(time.mktime(datetime.now().timetuple()))
+           +            states[role] = {'status':'Stopped', 'stop-time':now}
+           +            # wait for the alert to get returned to Hopsworks, before returning (as this will cause a correct refresh of the service's status)
+           +            Service().failed(cluster, service, role)
+           +            sleep(heartbeat_interval+1)
+           +            return True
+           +        except Exception as err:
+           +            logger.error(err)
+           +            return False
+           +
+           +    def restart(self, cluster, service, role):
+           +        script = BIN_DIR + "/restart-service.sh"
+           +        try:
+           +            p = Popen(['sudo',script,role], close_fds=True)
+           +            p.wait()
+           +            returncode = p.returncode
+           +            if not returncode == 0:
+           +                raise Exception("Restart script returned a none-zero value")
+           +            Service().started(cluster, service, role)
+           +            # wait for the alert to get returned to Hopsworks, before returning (as this will cause a correct refresh of the service's status)
+           +            sleep(heartbeat_interval)
+           +            return True
+           +        except Exception as err:
+           +            logger.error(err)
+           +            return False
+           +
+           +    def alive(self, cluster, service, role):
+           +        script = BIN_DIR + "/status-service.sh"
+           +        try:
+           +            p = Popen(['sudo',script,role], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+           +            if (verbose == True):
+           +                with p.stdout:
+           +                    for line in iter(p.stdout.readline, b''):
+           +                        logger.info("{0}".format(line))
+           +            p.wait()
+           +            if not p.returncode == 0:
+           +                return False
+           +        except Exception as err:
+           +            logger.error(err)
+           +            return False
+           +        return True
+           +
+           +    def failed(self, cluster, service, role):
+           +        now = long(time.mktime(datetime.now().timetuple()))
+           +        states[role] = {'status':'Stopped', 'start-time':now}
+           +        Alert.send(cluster, service, role, now, False)
+           +
+           +    def started(self, cluster, service, role):
+           +        now = long(time.mktime(datetime.now().timetuple()))
+           +        states[role] = {'status':'Started', 'start-time':now}
+           +        Alert.send(cluster, service, role, now, True)
+           +
+           +
+           +class MySQLConnector():
+           +    @staticmethod
+           +    def read(database, table):
+           +        try:
+           +            db = MySQLdb.connect(unix_socket=mysql_socket, db=database)
+           +            cur = db.cursor()            
+           +            query = "SELECT * FROM {0}".format(table)
+           +            cur.execute(query)    
+           +            return json.dumps(cur.fetchall())
+           +        except Exception as err:
+           +            logger.error("Could not access {0} table from {1}: {2}".format(table, database, err))
+           +            return json.dumps(["Error", "Error: Could not access {0} table from {1}.".format(table, database)])     
+           +            
+           +    @staticmethod
+           +    def read_ndbinfo(table):
+           +        return MySQLConnector.read("ndbinfo", table)
+           +    
+           +    
+           +class CommandHandler():
+           +
+           +    def response(self, code, msg):
+           +        resp = HTTPResponse(status=code, output=msg)
+           +        logger.info("{0}".format(resp))
+           +        return resp
+           +         
+           +    def init(self, cluster, service, role):
+           +        section = Config().section_name(cluster, service, role)
+           +        if not services.has_section(section):
+           +            return CommandHandler().response(400, 'Role not installed.')
+           +        else:
+           +            if Service().init(cluster, service, role) == True:
+           +                return CommandHandler().response(200, 'Role initialized.')
+           +            else:
+           +                return CommandHandler().response(400, 'Error: Cannot initialize the service.')
+           +    
+           +    def start(self, cluster, service, role):
+           +        section = Config().section_name(cluster, service, role)
+           +        if not services.has_section(section):
+           +            return CommandHandler().response(400, 'Role not installed.')
+           +        elif states[role]['status'] == 'Started':
+           +            return CommandHandler().response(400, 'Role already started.')
+           +        else:
+           +            res = Service().start(cluster, service, role)
+           +            if res == False:
+           +                return CommandHandler().response(400, 'Error: Cannot start the service.')
+           +            else:
+           +                return CommandHandler().response(200, "Role started.")
+           +
+           +    def stop(self, cluster, service, role):
+           +        section = Config().section_name(cluster, service, role)
+           +        if not services.has_section(section):
+           +            return CommandHandler().response(400, 'Role not installed.')
+           +        elif not states[role]['status'] == 'Started':
+           +            return CommandHandler().response(400, 'Role is not running.')
+           +        else:
+           +            if Service().stop(cluster, service, role) == True:
+           +                return CommandHandler().response(200, 'Role stopped.')
+           +            else:
+           +                return CommandHandler().response(400, 'Error: Cannot stop the service.')
+           +
+           +    def restart(self, cluster, service, role):
+           +        section = Config().section_name(cluster, service, role)
+           +        if not services.has_section(section):
+           +            return CommandHandler().response(400, 'Role not installed.')
+           +        else:
+           +            res = Service().restart(cluster, service, role)
+           +            if res == False:
+           +                return CommandHandler().response(400, 'Error: Cannot restart the service.')
+           +            else:
+           +                return CommandHandler().response(200, "Role started.")
+           +
+           +    def read_log(self, cluster, service, role, lines):
+           +        try:
+           +            lines = int(lines)
+           +            if role == None:
+           +                section = Config().section_name(cluster, service)
+           +            else:
+           +                section = Config().section_name(cluster, service, role)                
+           +            log_file_name = Config().get(section, "stdout-file")
+           +            log = Util().tail(log_file_name, lines)
+           +            return CommandHandler().response(200, log)
+           +        
+           +        except Exception as err:
+           +            logger.error(err)
+           +            return CommandHandler().response(400, "Cannot read file.")
+           +
+           +    def read_agent_log(self, lines):
+           +        try:
+           +            lines = int(lines)
+           +            log = Util().tail(LOG_FILE, lines)
+           +            return CommandHandler().response(200, log)
+           +        
+           +        except Exception as err:
+           +            logger.error(err)
+           +            return CommandHandler().response(400, "Cannot read file.")
+           +
+           +    def read_config(self, cluster, service, role):
+           +        try:
+           +            section = Config().section_name(cluster, service, role)
+           +            config_file_name = Config().get(section, "config-file")
+           +            with open(config_file_name) as config_file:
+           +                conf = "".join(str(x) for x in (list(config_file)))
+           +            return CommandHandler().response(200, conf)
+           +        
+           +        except Exception as err:
+           +            logger.error(err)
+           +            return CommandHandler().response(400, "Cannot read file.")
+           +
+           +    def info(self, cluster, service, role):
+           +        try:
+           +            section = Config().section_name(cluster, service, role)
+           +            resp = json.dumps(Config().get_section(section))
+           +            return CommandHandler().response(200, resp)
+           +        
+           +        except Exception as err:
+           +            logger.error(err)
+           +            return CommandHandler().response(400, "Cannot read file.")
+           +
+           +    def read_ndbinfo(self, table):
+           +        res = MySQLConnector.read_ndbinfo(table)
+           +        return CommandHandler().response(200, res)
+           +                
+           +    def execute(self, cluster, service, role, command, params):
+           +        try:
+           +            if role == None:
+           +                section = Config().section_name(cluster, service)
+           +            else:    
+           +                section = Config().section_name(cluster, service, role)
+           +            script = Config().get(section, "command-script")
+           +            logger.info("Script name executing is: {0}".format(script))
+           +            env = Config().get(section, "command-env")
+           +            command = env + " " + script + " " + params
+           +            command = re.sub(r'([\"])', r'\\\1', command)
+           +            as_user = Config().get(section, "command-user")
+           +# TODO: could check if as_user == "root" or as_user == "sudo" here...
+           +            if not as_user:
+           +                logger.warn("No user supplied to execute command: {0}".format(command))
+           +                raise Exception("Not allowed execute command as user: {0}".format(as_user))
+           +            if as_user:
+           +                command = "su - " + as_user + " -c \"" + command + "\""
+           +# TODO: shell=True is insecure when using untrusted input
+           +# as an attacker can input "hdfs dfs -ls / ; rm -rf /"
+           +            p = Popen(command , shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+           +            out, err = p.communicate()        
+           +            return CommandHandler().response(200, out)
+           +        
+           +        except Exception as err:
+           +            logger.error(err)
+           +            return CommandHandler().response(400, "Could not execute.")                
+           +                
+           +    def refresh(self):
+           +        Heartbeat.send(False);
+           +        return CommandHandler().response(200, "OK")
+           +
+           +
+           +class Authentication():
+           +    def check(self):
+           +        result = False
+           +        try:
+           +            username = request.params['username']  
+           +            inPassword = request.params['password']  
+           +            if (username, inPassword) == (user, password):
+           +                return True
+           +        except Exception:
+           +            result = False
+           +
+           +        if result == False:
+           +            logger.info("Authentication failed: Invalid username/password: {0}/{1}".format(username, password))
+           +        return result
+           +    
+           +    def failed(self):
+           +        return HTTPResponse(status=400, output="Invalid username/password")
+           +
+           +
+           +class SSLCherryPy(ServerAdapter):  
+           +    def run(self, handler):  
+           +        from cherrypy import wsgiserver  
+           +        server = wsgiserver.CherryPyWSGIServer((self.host, self.port), handler)  
+           +        # Certificate file. If a valid path, SSL will be used. Set to None to disable SSL  
+           +        server.ssl_certificate = CERT_FILE
+           +        server.ssl_private_key = KEY_FILE
+           +        # server.ssl_certificate_chain = 'ssl/bundle.crt'
+           +        try:  
+           +            server.start()  
+           +        finally:  
+           +            server.stop()
+           +
+           +if __name__ == '__main__':
+           +    
+           +    if len(sys.argv) > 1:
+           +        if (sys.argv[1] == "-v" or sys.argv[1] == "-verbose" or sys.argv[1] == "--verbose"):
+           +            verbose=True
+           +        else:
+           +            print "usage: <prog> [-v|-verbose]"
+           +            sys.exit()
+           +
+           +    agent_pid = str(os.getpid())
+           +    file(agent_pidfile, 'w').write(agent_pid)
+           +    logger.info("Hops Kagent PID: {0}".format(agent_pid))
+           +    logger.setLevel(Util().logging_level(logging_level))
+           +
+           +    # Heartbeat, process watch (alerts) and REST API are available after the agent registers successfully 
+           +#    thread.start_new_thread(Heartbeat, ()) 
+           +    hb_thread = threading.Thread(target=Heartbeat, args=())
+           +    hb_thread.setDaemon(True)
+           +    hb_thread.start()
+           +
+           +    for s in services.sections():
+           +        cluster = Config().get(s, "cluster")
+           +        service = Config().get(s, "service")       
+           +        if services.has_option(s, "role"):
+           +            role = Config().get(s, "role")             
+           +#            thread.start_new_thread(ExtProcess.watch, (cluster, service, role))
+           +            my_thread = threading.Thread(target=ExtProcess.watch, args=(cluster, service, role))
+           +            my_thread.setDaemon(True)
+           +            my_thread.start()
+           +        else:
+           +            logger.info("Not watching {0}/{1}".format(cluster, service))        
+           +                            
+           +
+           +    server_names['sslcherrypy'] = SSLCherryPy  
+           +    app = Bottle()
+           +    @get('/ping')
+           +    def ping():
+           +        logger.info('Incoming REST Request:  GET /ping')       
+           +        return "Hops-Agent: Pong"
+           +        
+           +    @get('/do/<cluster>/<service>/<role>/<command>')
+           +    def do(cluster, service, role, command):
+           +        logger.info('Incoming REST Request:  GET /do/{0}/{1}/{2}/{3}'.format(cluster, service, role, command))
+           +        if not Authentication().check():
+           +            return Authentication().failed()
+           +        section = Config().section_name(cluster, service, role)
+           +        logger.info("Section is {0}".format(section))
+           +        if not services.has_section(section):
+           +            logger.error("Couldn't find command {0} in {1}/{2} in section {3}".format(command, service, role, section))
+           +            return HTTPResponse(status=400, output='Invalid command.')            
+           +
+           +        serviceInServicesFile = Config().get(section, "service")
+           +        roleInServicesFile = Config().get(section, "role")
+           +        commandInServicesFile = Config().get(section, "{0}-script".format(command))
+           +
+           +        if (not service == serviceInServicesFile) or (not role == roleInServicesFile) or (not commandInServicesFile):
+           +            logger.error("Couldn't find command {0} in {1}/{2}".format(command, service, role))
+           +            return HTTPResponse(status=400, output='Invalid command.')            
+           +        
+           +        if command == "start":
+           +            return CommandHandler().start(cluster, service, role);
+           +        elif command == "stop":
+           +            return CommandHandler().stop(cluster, service, role);                
+           +        elif command == "init":
+           +            return CommandHandler().init(cluster, service, role); 
+           +        else:
+           +            return HTTPResponse(status=400, output='Invalid command.')        
+           +
+           +    @get('/restartRole/<cluster>/<service>/<role>')
+           +    def restartRole(cluster, service, role):
+           +        logger.info('Incoming REST Request:  GET /restartRole/{0}/{1}'.format(cluster, service, role))
+           +        if not Authentication().check():
+           +            return Authentication().failed()
+           +        
+           +        if not services.has_section(Config().section_name(cluster, service, role)):
+           +            return HTTPResponse(status=400, output='Cluster/Service/Role not available.')
+           +
+           +        return CommandHandler().restart(cluster, service, role);
+           +
+           +    @get('/startRole/<cluster>/<service>/<role>')
+           +    def startRole(cluster, service, role):
+           +        logger.info('Incoming REST Request:  GET /startRole/{0}/{1}'.format(cluster, service, role))
+           +        if not Authentication().check():
+           +            return Authentication().failed()
+           +        
+           +        if not services.has_section(Config().section_name(cluster, service, role)):
+           +            return HTTPResponse(status=400, output='Cluster/Service/Role not available.')
+           +
+           +        return CommandHandler().start(cluster, service, role);
+           +
+           +    @get('/stopRole/<cluster>/<service>/<role>')
+           +    def stopRole(cluster, service, role):
+           +        logger.info('Incoming REST Request:  GET /stopRole/{0}/{1}/{2}'.format(cluster, service, role))
+           +        if not Authentication().check():
+           +            return Authentication().failed()
+           +        
+           +        if not services.has_section(Config().section_name(cluster, service, role)):
+           +            return HTTPResponse(status=400, output='Cluster/Service/Role not available.')
+           +
+           +        return CommandHandler().stop(cluster, service, role);
+           +
+           +    @get('/log/<cluster>/<service>/<role>/<lines>')
+           +    def log(cluster, service, role, lines):
+           +        logger.info('Incoming REST Request:  GET /log/{0}/{1}/{2}'.format(cluster, service, role, lines))
+           +        if not Authentication().check():
+           +            return Authentication().failed()
+           +        
+           +        if not services.has_section(Config().section_name(cluster, service, role)):
+           +            return HTTPResponse(status=400, output='Cluster/Service/Role not available.')
+           +
+           +        return CommandHandler().read_log(cluster, service, role, lines);
+           +
+           +
+           +    @get('/log/<cluster>/<service>/<lines>')
+           +    def log(cluster, service, lines):
+           +        logger.info('Incoming REST Request:  GET /log/{0}/{1}'.format(cluster, service))
+           +        if not Authentication().check():
+           +            return Authentication().failed()
+           +        
+           +        if not services.has_section(Config().section_name(cluster, service)):
+           +            return HTTPResponse(status=400, output='Cluster/Service not available.')
+           +
+           +        return CommandHandler().read_log(cluster, service, None, lines);
+           +
+           +
+           +    @get('/agentlog/<lines>')
+           +    def agentlog(lines):
+           +        logger.info('Incoming REST Request:  GET /agentlog/{0}'.format(lines))
+           +        if not Authentication().check():
+           +            return Authentication().failed()
+           +                                    
+           +        return CommandHandler().read_agent_log(lines);
+           +
+           +    @get('/config/<cluster>/<service>/<role>')
+           +    def config(cluster, service, role):
+           +        logger.info('Incoming REST Request:  GET /log/{0}/{1}/{2}'.format(cluster, service, role))
+           +        if not Authentication().check():
+           +            return Authentication().failed()
+           +        
+           +        if not services.has_section(Config().section_name(cluster, service, role)):
+           +            return HTTPResponse(status=400, output='Cluster/Service/Role not available.')
+           +            
+           +        return CommandHandler().read_config(cluster, service, role);
+           +
+           +    @get('/info/<cluster>/<service>/<role>')
+           +    def info(cluster, service, role):
+           +        logger.info('Incoming REST Request:  GET /status/{0}/{1}'.format(cluster, service, role))
+           +        if not Authentication().check():
+           +            return Authentication().failed()
+           +        
+           +        if not services.has_section(Config().section_name(cluster, service, role)):
+           +            return HTTPResponse(status=400, output='Cluster/Service/Role not available.')
+           +            
+           +        return CommandHandler().info(cluster, service, role);
+           +
+           +    @get('/refresh')  # request heartbeat
+           +    def refresh():
+           +        logger.info('Incoming REST Request:  GET /refresh')
+           +        if not Authentication().check():
+           +            return Authentication().failed()
+           +             
+           +        return CommandHandler().refresh();
+           +
+           +    @get('/mysql/ndbinfo/<table>')
+           +    def mysql_read(table):
+           +        logger.info('Incoming REST Request:  GET /mysql/ndbinfo/{0}'.format(table))
+           +        if not Authentication().check():
+           +            return Authentication().failed()
+           +            
+           +        return CommandHandler().read_ndbinfo(table)
+           +    
+           +    @post('/execute/<state>/<cluster>/<service>/<role>/<command>')
+           +    def execute_hdfs(state, cluster, service, role, command):
+           +        logger.info('Incoming REST Request:  POST /execute/{0}/{1}/{2}/{3}/{4}'.format(state, cluster, service, role, command))
+           +        if not Authentication().check():
+           +            return Authentication().failed()            
+           +        if request.body.readlines():
+           +            params =  request.body.readlines()[0]
+           +        else:
+           +            params = ""                        
+           +        if state == "run" :
+           +            if role == "-":
+           +                return CommandHandler().execute(cluster, service, None, command, params);
+           +            else:       
+           +                return CommandHandler().execute(cluster, service, role, command, params);
+           +        return CommandHandler().response(404, "Error")  
+           +                
+           +'''
+           +Tensorflow REST API.
+           +   Operations to allocate/free resources for Tensorflow programs.
+           +   Start/stop Tensorflow programs.
+           +   Serve/stop-serving Tensorflow models.
+           +'''
+           +
+           +    @post('/tf/alloc/<projuser>/<cpus>/<gpus>')
+           +    def tf_alloc(projuser, cpus, gpus):
+           +     # Extract the projectname, username
+           +     # Check if the directory exists, if not create it
+           +     # Check in state if there is 
+           +
+           +
+           +        return HTTPResponse(status=400, output='Invalid command.')        
+           +
+           +    @post('/tf/free/<projuser>/<allocation>')
+           +    def tf_free(projuser, allocation):
+           +        return HTTPResponse(status=400, output='Invalid command.')        
+           +
+           +    @post('/tf/runcpu/<projuser>/<pythonprog>/<args>')
+           +    def tf_run_cpu(projuser, pythonprog, args):
+           +        return HTTPResponse(status=400, output='Invalid command.')        
+           +
+           +    @post('/tf/rungpu/<projuser>/<pythonprog>/<args>')
+           +    def tf_run_gpu(projuser, pythonprog, args):
+           +        return HTTPResponse(status=400, output='Invalid command.')        
+           +
+           +    @post('/tf/poll/<projuser>')
+           +    def tf_poll(projuser):
+           +        return HTTPResponse(status=400, output='Invalid command.')        
+           +
+           +
+           +    @post('/tf/uploadserver/<projuser>/<model>')
+           +    def tf_start_serving(projuser,model):
+           +        try:
+           +            model_filename = request.POST.get('model')
+           +            for i in request.files.getlist('file'):
+           +                filepath = os.path.join('./models/uploaded',thisuser.data.get('model'))
+           +                fileobj = i.file
+           +                with open(filepath,"wb") as target_file:
+           +                    while True:
+           +                        datachunk = fileobj.read(1024)
+           +                        if not datachunk:
+           +                            break
+           +                    target_file.write(datachunk)
+           +
+           +        except:
+           +            print("error: " + sys.exc_info())
+           +
+           +        return HTTPResponse(status=400, output='Invalid command.')        
+           +
+           +    @cherrypy.tools.accept(media='application/json')
+           +    @post('/tf/startserving/<projuser>/<modelfilename>/<args>')
+           +    def tf_start_serving(projuser,modelfilename,args):
+           +        try:
+           +            rawData = cherrypy.request.body.read(int(cherrypy.request.headers['Content-Length']))
+           +            b = json.loads(rawData)
+           +#            return json.dumps({'x': 4, 'c': b})
+           +
+           +            model_filename = request.POST.get('model')
+           +            args = request.POST.get('args')
+           +#            response.content_type = 'application/json'
+           +            return json.dumps(tfcase.search(searchterm,images_only))
+           +        except:
+           +            print("error: " + sys.exc_info())
+           +#        return json.dumps(tfcase.search(searchterm,images_only))
+           +        return HTTPResponse(status=400, output='Invalid command.')        
+           +
+           +
+           +    @cherrypy.tools.accept(media='text/plain')
+           +    @get('/tf/stopserving/<projuser>/<model>')
+           +    def tf_stop_serving(projuser,model):
+           +        return HTTPResponse(status=400, output='Invalid command.')        
+           +
+           +
+           +
+           +    logger.info("RESTful service started.")
+           +    run(host='0.0.0.0', port=agent_restport, server='sslcherrypy')
+           +
+           +
+           - change mode from '' to '0710'
+           - change owner from '' to 'kagent'
+           - change group from '' to 'kagent'
+         * template[/var/lib/kagent-certs/csr.py] action create
+           - create new file /var/lib/kagent-certs/csr.py
+           - update content in file /var/lib/kagent-certs/csr.py from none to e68d39
+           --- /var/lib/kagent-certs/csr.py	2016-08-27 22:04:32.458624128 +0000
+           +++ /var/lib/kagent-certs/.chef-csr.py20160827-1221-127i1au	2016-08-27 22:04:32.458624128 +0000
+           @@ -1 +1,262 @@
+           +#!/usr/bin/env python
+           +
+           +'''
+           +@author: Jim Dowling <jdowling@kth.se>
+           +
+           +Install:
+           + requests:    easy_install requests
+           + Netifaces:   easy_install netifaces
+           + IPy:         easy_install ipy
+           + pyOpenSSL:   apt-get install python-openssl
+           + MySQLdb:     apt-get install python-mysqldb
+           + pexpect:     apt-get install python-pexpect
+           +'''
+           +
+           +import time
+           +from threading import Lock
+           +import os
+           +import sys
+           +import ConfigParser
+           +import requests
+           +import logging.handlers
+           +import json
+           +from OpenSSL import crypto
+           +import socket
+           +from os.path import exists, join
+           +import netifaces
+           +from IPy import IP
+           +import logging
+           +import subprocess
+           +import string
+           +import random
+           +
+           +
+           +try:
+           +    import http.client as http_client
+           +except ImportError:
+           +    # Python 2
+           +    import httplib as http_client
+           +http_client.HTTPConnection.debuglevel = 1
+           +
+           +logging.basicConfig()
+           +logging.getLogger().setLevel(logging.DEBUG)
+           +requests_log = logging.getLogger("requests.packages.urllib3")
+           +requests_log.setLevel(logging.DEBUG)
+           +requests_log.propagate = True
+           +retries = 20
+           +
+           +class Util():
+           +
+           +    def logging_level(self, level):
+           +        return {
+           +                'INFO': logging.INFO,
+           +                'WARN': logging.WARN,
+           +                'WARNING': logging.WARNING,
+           +                'ERROR': logging.ERROR,
+           +                'DEBUG' : logging.DEBUG,
+           +                'CRITICAL': logging.CRITICAL,
+           +                }.get(level, logging.NOTSET)
+           +
+           +
+           +class Register():
+           +
+           +    def __init__(self, csr, key):
+           +        while True:
+           +            cert = Register.register(csr, key)
+           +            if cert != None:
+           +                Cert.store(cert, key)
+           +                break
+           +            time.sleep(heartbeat_interval)
+           +
+           +    @staticmethod
+           +    def register(csr, key):
+           +            try:
+           +		json_headers = {'User-Agent': 'Agent', 'content-type': 'application/json'}
+           +        	form_headers = {'User-Agent': 'Agent', 'content-type': 'application/x-www-form-urlencoded'}
+           +		payload = {}
+           +                payload["csr"] = csr
+           +                payload["agent-password"] = agent_password
+           +                payload["host-id"] = host_id            
+           +                logger.info("Registering with HopsWorks...")
+           +		session = requests.Session()
+           +		session.post(login_url, data={'email': server_username, 'password': server_password}, headers=form_headers, verify=False)
+           +		resp = session.post(register_url, data=json.dumps(payload), headers=json_headers, verify=False)
+           +		if not resp.status_code == HTTP_OK:
+           +               		raise Exception('Could not register: Unknown host id or internal error on the dashboard (Status code: {0}).'.format(resp.status_code))
+           +                
+           +                # Loads (Load String) takes a Json file and converts into python data structure (dict or list, depending on JSON)
+           +                # jData = json.loads(myResponse.content)
+           +                jData = json.loads(resp.content)
+           +                cert = jData['pubAgentCert']
+           +                caCert = jData['caPubCert']
+           +
+           +                cert_dir = os.path.dirname(os.path.abspath(__file__))
+           +                with open(join(cert_dir, CA_FILE), "wt") as f:
+           +                    f.write(caCert)
+           +                logger.info("Writing Ca Public key to {0}.".format(CA_FILE))
+           +
+           +                logger.info("Registered successfully.")
+           +                return cert
+           +            except Exception as err:
+           +                logger.error("{0}. Retrying in {1} seconds...".format(err, heartbeat_interval))
+           +                return None
+           +
+           +class Cert():
+           +
+           +    @staticmethod
+           +    def get_dir():
+           +        return os.path.dirname(os.path.abspath(__file__))
+           +
+           +    @staticmethod
+           +    def exist():
+           +        cert_dir = Cert.get_dir()
+           +        return exists(join(cert_dir, CERT_FILE)) and exists(join(cert_dir, KEY_FILE))
+           +
+           +    @staticmethod
+           +    def existsKeystore():
+           +        return exists(SERVER_KEYSTORE) and exists(SERVER_TRUSTSTORE) and exists(CLIENT_TRUSTSTORE)
+           +    
+           +    @staticmethod
+           +    def create_key_and_csr():
+           +        """
+           +        Create key-pair and certificate sign request (CSR)
+           +        """
+           +        # create a key pair
+           +        pkey = crypto.PKey()
+           +        pkey.generate_key(crypto.TYPE_RSA, 2048)
+           +        # create certificate sign request
+           +        req = crypto.X509Req()
+           +        req.get_subject().C = "SE"
+           +        req.get_subject().ST = "Sweden"
+           +        req.get_subject().L = "Stockholm"
+           +        req.get_subject().O = "HopsWorks"
+           +        req.get_subject().OU = "KTH"
+           +        req.get_subject().CN = hostname
+           +        req.set_pubkey(pkey)
+           +        req.sign(pkey, 'sha256')
+           +        csr = crypto.dump_certificate_request(crypto.FILETYPE_PEM, req)
+           +        private_key = crypto.dump_privatekey(crypto.FILETYPE_PEM, pkey)
+           +        return csr, private_key
+           +
+           +    @staticmethod
+           +    def store(cert, key):
+           +        """
+           +        Write certificate and private key in current directory
+           +        """
+           +        cert_dir = Cert.get_dir()
+           +        with open(join(cert_dir, CERT_FILE), "wt") as f:
+           +            f.write(cert)
+           +        with open(join(cert_dir, KEY_FILE), "wt") as f:
+           +            f.write(key)
+           +        logger.info("Writing Cert/Key pair to {0} - {1}.".format(CERT_FILE, KEY_FILE))
+           +
+           +var="~#@#@!#@!#!@#@!#"
+           +
+           +config_mutex = Lock()
+           +
+           +HTTP_OK = 200
+           +
+           +CONFIG_FILE = "/var/lib/kagent/config.ini"
+           +LOG_FILE = "/var/lib/kagent/csr.log"
+           +CERT_FILE = "/var/lib/kagent-certs/pub.pem"
+           +CA_FILE = "/var/lib/kagent-certs/ca_pub.pem"
+           +KEY_FILE = "/var/lib/kagent-certs/priv.key"
+           +SERVER_KEYSTORE = "/var/lib/kagent-certs/keystores/node_server_keystore.jks"
+           +SERVER_TRUSTSTORE = "/var/lib/kagent-certs/keystores/node_server_truststore.jks"
+           +CLIENT_TRUSTSTORE = "/var/lib/kagent-certs/keystores/node_client_truststore.jks"
+           +
+           +# reading config
+           +try:
+           +    config = ConfigParser.ConfigParser()
+           +    config.read(CONFIG_FILE)
+           +    server_url = config.get('server', 'url')
+           +    register_url = server_url + config.get('server', 'path-register')
+           +    login_url = server_url + config.get('server', 'path-login')
+           +    server_username = config.get('server', 'username')
+           +    server_password = config.get('server', 'password')
+           +
+           +    heartbeat_interval = config.getfloat('agent', 'heartbeat-interval')
+           +    logging_level = config.get('agent', 'logging-level').upper()
+           +    max_log_size = config.getint('agent', 'max-log-size')
+           +    agent_pidfile = config.get('agent', 'pid-file')
+           +    network_interface = config.get('agent', 'network-interface')
+           +
+           +    if (config.has_option("agent", "hostname")):
+           +        hostname = config.get("agent", "hostname")
+           +    else:
+           +        hostname = socket.gethostbyaddr(eth0_ip)[0]
+           +        
+           +    if (config.has_option("agent", "host-id")):
+           +        host_id = config.get("agent", "host-id")
+           +    else:
+           +        host_id = hostname
+           +
+           +
+           +    agent_password = ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(8))    
+           +    config.set('agent', 'password', agent_password)
+           +    with open(CONFIG_FILE, 'wb') as configfile: 
+           +        config.write(configfile)
+           +
+           +# TODO find public/private IP addresses
+           +    public_ip = None
+           +    private_ip = None
+           +    eth0_ip = netifaces.ifaddresses(network_interface)[netifaces.AF_INET][0]['addr']
+           +    if (IP(eth0_ip).iptype() == "PUBLIC"):
+           +        public_ip = eth0_ip
+           +    else:
+           +        private_ip = eth0_ip
+           +
+           +    hostname = socket.gethostbyaddr(eth0_ip)[0]
+           +
+           +    if (config.has_option("agent", "host-id")):
+           +        host_id = config.get("agent", "host-id")
+           +    else:
+           +        host_id = hostname
+           +
+           +
+           +except Exception, e:
+           +    print "Exception while reading {0}: {1}".format(CONFIG_FILE, e)
+           +    sys.exit(1)
+           +
+           +# logging
+           +try:
+           +    os.remove(LOG_FILE + '.1')
+           +except:
+           +    pass
+           +with open(LOG_FILE, 'w'):  # clear log file
+           +    pass
+           +logger = logging.getLogger('agent')
+           +logger_formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
+           +logger_file_handler = logging.handlers.RotatingFileHandler(LOG_FILE, "w", maxBytes=max_log_size, backupCount=1)
+           +logger_stream_handler = logging.StreamHandler()
+           +logger_file_handler.setFormatter(logger_formatter)
+           +logger_stream_handler.setFormatter(logger_formatter)
+           +logger.addHandler(logger_file_handler)
+           +logger.addHandler(logger_stream_handler)
+           +logger.setLevel(logging.INFO)
+           +
+           +logger.info("Hops Csr-Agent started.")
+           +logger.info("Register URL: {0}".format(register_url))
+           +logger.info("Public IP: {0}".format(public_ip))
+           +logger.info("Private IP: {0}".format(private_ip))
+           +
+           +
+           +if __name__ == '__main__':
+           +
+           +    agent_pid = str(os.getpid())
+           +    file(agent_pidfile, 'w').write(agent_pid)
+           +    logger.info("Hops-CSR-Agent PID: {0}".format(agent_pid))
+           +    logger.setLevel(Util().logging_level(logging_level))
+           +
+           +    if not Cert.exist():
+           +        (csr, key) = Cert.create_key_and_csr()
+           +        Register(csr, key) # Registering with the dashboard
+           +        subprocess.call("/var/lib/kagent/keystore.sh")
+           +    else:
+           +        logger.info('Certificate files exist. Already registered. Skipping registration phase.')
+           +
+           +    if not Cert.existsKeystore():
+           +        subprocess.call("/var/lib/kagent/keystore.sh")
+           +    else:
+           +        logger.info('Keystore files found.')
+           - change mode from '' to '0710'
+           - change owner from '' to 'kagent'
+           - change group from '' to 'kagent'
+         * template[/var/lib/kagent/bin/start-agent.sh] action create
+           - create new file /var/lib/kagent/bin/start-agent.sh
+           - update content in file /var/lib/kagent/bin/start-agent.sh from none to dd1d26
+           --- /var/lib/kagent/bin/start-agent.sh	2016-08-27 22:04:32.486610128 +0000
+           +++ /var/lib/kagent/bin/.chef-start-agent.sh20160827-1221-1v2scj0	2016-08-27 22:04:32.486610128 +0000
+           @@ -1 +1,23 @@
+           +#!/bin/bash
+           +# returns '0' if agent started successfully
+           +# returns '1' if agent already running
+           +
+           +source /var/lib/kagent/bin/get-pid.sh
+           +
+           +if [ $? -ne 0 ]; then
+           +	echo "Starting the agent..."
+           +	nohup /var/lib/kagent/agent.py &> /dev/null &
+           +        sleep 1
+           +        PID_FILE=/var/lib/kagent/kagent.pid
+           +        if [ -e $PID_FILE ] ; then
+           +          PID=`cat $PID_FILE`
+           +          echo "PID is $PID"
+           +        fi
+           +else
+           +    echo "Agent is already running with pid=$PID."
+           +    exit 1
+           +fi
+           +echo ""
+           +exit 0
+           +
+           - change mode from '' to '0750'
+           - change owner from '' to 'kagent'
+           - change group from '' to 'kagent'
+         * template[/var/lib/kagent/bin/stop-agent.sh] action create
+           - create new file /var/lib/kagent/bin/stop-agent.sh
+           - update content in file /var/lib/kagent/bin/stop-agent.sh from none to f441d2
+           --- /var/lib/kagent/bin/stop-agent.sh	2016-08-27 22:04:32.494606129 +0000
+           +++ /var/lib/kagent/bin/.chef-stop-agent.sh20160827-1221-xal7gi	2016-08-27 22:04:32.494606129 +0000
+           @@ -1 +1,12 @@
+           +#!/bin/bash
+           +
+           +source /var/lib/kagent/bin/get-pid.sh
+           +
+           +if [ $? -ne 0 ]; then
+           +	echo "Agent is not running."
+           +else
+           +	echo "Agent's process-id is $PID. Killing the agent..."
+           +	kill -9 $PID
+           +fi
+           +exit $?
+           - change mode from '' to '0750'
+           - change owner from '' to 'kagent'
+           - change group from '' to 'kagent'
+         * template[/var/lib/kagent/bin/restart-agent.sh] action create
+           - create new file /var/lib/kagent/bin/restart-agent.sh
+           - update content in file /var/lib/kagent/bin/restart-agent.sh from none to fad0db
+           --- /var/lib/kagent/bin/restart-agent.sh	2016-08-27 22:04:32.498604129 +0000
+           +++ /var/lib/kagent/bin/.chef-restart-agent.sh20160827-1221-7yeh6d	2016-08-27 22:04:32.498604129 +0000
+           @@ -1 +1,7 @@
+           +#!/bin/bash
+           +
+           +/var/lib/kagent/bin/stop-agent.sh
+           +sleep 3
+           +/var/lib/kagent/bin/start-agent.sh
+           +exit $?
+           - change mode from '' to '0750'
+           - change owner from '' to 'kagent'
+           - change group from '' to 'kagent'
+         * template[/var/lib/kagent/bin/get-pid.sh] action create
+           - create new file /var/lib/kagent/bin/get-pid.sh
+           - update content in file /var/lib/kagent/bin/get-pid.sh from none to a52e33
+           --- /var/lib/kagent/bin/get-pid.sh	2016-08-27 22:04:32.506600129 +0000
+           +++ /var/lib/kagent/bin/.chef-get-pid.sh20160827-1221-8e3xbe	2016-08-27 22:04:32.506600129 +0000
+           @@ -1 +1,12 @@
+           +echo ""
+           +echo "Checking if the agent is running...."
+           +echo ""
+           +PID_FILE=/var/lib/kagent/kagent.pid
+           +PID=""
+           +if [ -e $PID_FILE ] ; then
+           +  PID=`cat $PID_FILE`
+           +fi
+           +echo "PID is $PID"
+           +echo ""
+           +kill -0 $PID 2> /dev/null
+           - change mode from '' to '0750'
+           - change owner from '' to 'kagent'
+           - change group from '' to 'kagent'
+         * template[/var/lib/kagent/services] action create
+           - change mode from '0755' to '0644'
+         * template[/var/lib/kagent/bin/start-service.sh] action create
+           - create new file /var/lib/kagent/bin/start-service.sh
+           - update content in file /var/lib/kagent/bin/start-service.sh from none to aee170
+           --- /var/lib/kagent/bin/start-service.sh	2016-08-27 22:04:32.514596129 +0000
+           +++ /var/lib/kagent/bin/.chef-start-service.sh20160827-1221-1emsiv1	2016-08-27 22:04:32.514596129 +0000
+           @@ -1 +1,11 @@
+           +#!/bin/bash
+           +
+           +set -e
+           +
+           +if [ $# -ne 1 ] ; then
+           +  echo "Usage: $0 service_name"
+           +  exit 2
+           +fi
+           +
+           +sudo service $1 start
+           - change mode from '' to '0750'
+           - change owner from '' to 'root'
+           - change group from '' to 'kagent'
+         * template[/var/lib/kagent/bin/stop-service.sh] action create
+           - create new file /var/lib/kagent/bin/stop-service.sh
+           - update content in file /var/lib/kagent/bin/stop-service.sh from none to 34798e
+           --- /var/lib/kagent/bin/stop-service.sh	2016-08-27 22:04:32.522592129 +0000
+           +++ /var/lib/kagent/bin/.chef-stop-service.sh20160827-1221-hlkcn0	2016-08-27 22:04:32.522592129 +0000
+           @@ -1 +1,11 @@
+           +#!/bin/bash
+           +
+           +set -e
+           +
+           +if [ $# -ne 1 ] ; then
+           +  echo "Usage: $0 service_name"
+           +  exit 2
+           +fi
+           +
+           +sudo service $1 stop
+           - change mode from '' to '0750'
+           - change owner from '' to 'root'
+           - change group from '' to 'kagent'
+         * template[/var/lib/kagent/bin/restart-service.sh] action create
+           - create new file /var/lib/kagent/bin/restart-service.sh
+           - update content in file /var/lib/kagent/bin/restart-service.sh from none to 416b5b
+           --- /var/lib/kagent/bin/restart-service.sh	2016-08-27 22:04:32.526590129 +0000
+           +++ /var/lib/kagent/bin/.chef-restart-service.sh20160827-1221-oavndr	2016-08-27 22:04:32.526590129 +0000
+           @@ -1 +1,11 @@
+           +#!/bin/bash
+           +
+           +set -e
+           +
+           +if [ $# -ne 1 ] ; then
+           +  echo "Usage: $0 service_name"
+           +  exit 2
+           +fi
+           +
+           +sudo service $1 restart
+           - change mode from '' to '0750'
+           - change owner from '' to 'root'
+           - change group from '' to 'kagent'
+         * template[/var/lib/kagent/bin/status-service.sh] action create
+           - create new file /var/lib/kagent/bin/status-service.sh
+           - update content in file /var/lib/kagent/bin/status-service.sh from none to b0f789
+           --- /var/lib/kagent/bin/status-service.sh	2016-08-27 22:04:32.534586129 +0000
+           +++ /var/lib/kagent/bin/.chef-status-service.sh20160827-1221-i3aypr	2016-08-27 22:04:32.534586129 +0000
+           @@ -1 +1,11 @@
+           +#!/bin/bash
+           +
+           +set -e
+           +
+           +if [ $# -ne 1 ] ; then
+           +  echo "Usage: $0 service_name"
+           +  exit 2
+           +fi
+           +
+           +sudo service $1 status
+           - change mode from '' to '0750'
+           - change owner from '' to 'root'
+           - change group from '' to 'kagent'
+         * template[/etc/sudoers.d/kagent] action create
+           - create new file /etc/sudoers.d/kagent
+           - update content in file /etc/sudoers.d/kagent from none to b295b0
+           --- /etc/sudoers.d/kagent	2016-08-27 22:04:32.538584129 +0000
+           +++ /etc/sudoers.d/.chef-kagent20160827-1221-19ukvil	2016-08-27 22:04:32.538584129 +0000
+           @@ -1 +1,8 @@
+           +kagent ALL=NOPASSWD: /var/lib/kagent/bin/start-service.sh
+           +kagent ALL=NOPASSWD: /var/lib/kagent/bin/stop-service.sh
+           +kagent ALL=NOPASSWD: /var/lib/kagent/bin/restart-service.sh
+           +kagent ALL=NOPASSWD: /var/lib/kagent/bin/status-service.sh
+           +kagent ALL=NOPASSWD: /var/lib/kagent/bin/start-all-local-services.sh
+           +kagent ALL=NOPASSWD: /var/lib/kagent/bin/shutdown-all-local-services.sh
+           +kagent ALL=NOPASSWD: /var/lib/kagent/bin/status-all-local-services.sh
+           - change mode from '' to '0440'
+           - change owner from '' to 'root'
+           - change group from '' to 'root'
+         * kagent_tf[0] action add
+         
+         * kagent_tf[0] action add
+         
+       Recipe: kagent::default
+         * service[kagent] action nothing (skipped due to action :nothing)
+         * template[/etc/init.d/kagent] action create
+           - create new file /etc/init.d/kagent
+           - update content in file /etc/init.d/kagent from none to 76650f
+           --- /etc/init.d/kagent	2016-08-27 22:04:32.546580130 +0000
+           +++ /etc/init.d/.chef-kagent20160827-1221-blo2uo	2016-08-27 22:04:32.546580130 +0000
+           @@ -1 +1,88 @@
+           +#!/bin/sh
+           +#
+           +# Startup script for kagent
+           +#
+           +### BEGIN INIT INFO
+           +# Provides:                     kagent
+           +# Required-Start:                 
+           +# Should-Start:                 
+           +# Required-Stop:                  
+           +# Default-Start:                2 3 4 5
+           +# Default-Stop:                 0 1 6
+           +# Short-Description:            start and stop kagent
+           +# Description:                  Start/Stop/Restart kagent
+           +### END INIT INFO
+           +
+           +# Variables
+           +START_PROG=/var/lib/kagent/bin/start-agent.sh
+           +STOP_PROG=/var/lib/kagent/bin/stop-agent.sh
+           +RESTART_PROG=/var/lib/kagent/bin/restart-agent.sh
+           +
+           +
+           +EXEC_WITH_USER="su kagent -c"
+           +
+           +
+           +start() {
+           +  echo "Executing as 'kagent': $START_PROG"
+           +  $EXEC_WITH_USER "$START_PROG"
+           +  return $?
+           +}
+           +
+           +stop() {
+           +  echo "Executing as 'kagent': $STOP_PROG"
+           +  $EXEC_WITH_USER "$STOP_PROG"
+           +  return $?
+           +}
+           +
+           +restart() {
+           +  echo "Executing as 'kagent': $RESTART_PROG"
+           +  $EXEC_WITH_USER "$RESTART_PROG"
+           +  return $?
+           +}
+           +
+           +status() {
+           +  echo "Executing as 'kagent': $STOP_PROG"
+           +  PID_FILE=/var/lib/kagent/kagent.pid
+           +  if [ -e $PID_FILE ] ; then
+           +     PID=`cat $PID_FILE`
+           +     kill -0 $PID
+           +     return $?
+           +  fi
+           +  return 1
+           +}
+           +
+           +
+           +# user-supplied parameter to stop/start/restart process.
+           +case "$1" in
+           +  init)
+           +    init
+           +    ;;
+           +  start)
+           +    start
+           +    ;;
+           +  stop)
+           +    stop
+           +    ;;
+           +  status)
+           +    status
+           +    ;;
+           +  restart)
+           +    restart
+           +    ;;
+           +  reload)
+           +    restart
+           +    ;;
+           +  -h|--help)
+           +    echo ""
+           +    echo "usage: <prog> start|stop|restart"
+           +    echo ""
+           +    exit 0
+           +    ;;
+           +  *)
+           +    echo $"Usage: <prog> {start|stop|restart}"
+           +    exit 1
+           +  esac
+           +
+           +
+           +exit $?
+           - change mode from '' to '0650'
+           - change owner from '' to 'kagent'
+           - change group from '' to 'kagent'
+         * template[/var/lib/kagent/bin/start-all-local-services.sh] action create
+           - create new file /var/lib/kagent/bin/start-all-local-services.sh
+           - update content in file /var/lib/kagent/bin/start-all-local-services.sh from none to 1f6a4a
+           --- /var/lib/kagent/bin/start-all-local-services.sh	2016-08-27 22:04:32.558574130 +0000
+           +++ /var/lib/kagent/bin/.chef-start-all-local-services.sh20160827-1221-ez5hz3	2016-08-27 22:04:32.558574130 +0000
+           @@ -1 +1,74 @@
+           +#!/bin/bash
+           +
+           +#supress perl warnings
+           +export LC_CTYPE=en_US.UTF-8
+           +export LC_ALL=en_US.UTF-8
+           +
+           +start()
+           +{
+           +if [[ $services == *"$active"* ]] ; then
+           + sudo /var/lib/kagent/bin/status-service.sh $active > /dev/null
+           + if [ $? -ne 0 ] ; then
+           +   echo -e "Starting ${active} ...."
+           +   sudo service $active start 2>&1 > /dev/null
+           +   if [ $? -ne 0 ] ; then 
+           +     echo -e "\e[31mProblem starting $active \e[0m"
+           +     echo -e "Trying one more time to start $active...."
+           +     sudo service $active start 2>&1 > /dev/null
+           +     if [ $? -ne 0 ] ; then 
+           +        echo -e "No, didn't start the 2nd time either."
+           +     else
+           +        echo -e "Started \e[32m${active} \e[0m...."
+           +     fi
+           +   else
+           +     echo -e "Started \e[32m${active} \e[0m...."
+           +   fi
+           + else
+           +   echo -e "$active was already \e[31mrunning \e[0m"
+           + fi
+           +fi
+           +
+           +}
+           +
+           +# Check which services are installed on this server
+           +services=$(grep role /var/lib/kagent/services | perl -p -e "s/role = //g" | perl -p -e "s/\n/ /g") 2>&1 > /dev/null
+           +services="kagent $services glassfish-domain1"
+           +
+           +echo -e ""
+           +# Shut down the services in the correct order
+           +
+           +active="ndb_mgmd"
+           +start
+           +active="ndbmtd"
+           +start
+           +active="mysqld"
+           +start
+           +active="zookeeper"
+           +start
+           +active="kafka"
+           +start
+           +active="namenode"
+           +start
+           +active="datanode"
+           +start
+           +active="resourcemanager"
+           +start
+           +active="nodemanager"
+           +start
+           +active="glassfish-domain1"
+           +start
+           +active="historyserver"
+           +start
+           +active="sparkhistoryserver"
+           +start
+           +active="elasticsearch-hopsworks"
+           +start
+           +active="livy"
+           +start
+           +active="epipe"
+           +start
+           +active="drelephant"
+           +start
+           +active="kagent"
+           +start
+           - change mode from '' to '0740'
+           - change owner from '' to 'kagent'
+           - change group from '' to 'kagent'
+         * template[/var/lib/kagent/bin/shutdown-all-local-services.sh] action create
+           - create new file /var/lib/kagent/bin/shutdown-all-local-services.sh
+           - update content in file /var/lib/kagent/bin/shutdown-all-local-services.sh from none to 06aa45
+           --- /var/lib/kagent/bin/shutdown-all-local-services.sh	2016-08-27 22:04:32.570568131 +0000
+           +++ /var/lib/kagent/bin/.chef-shutdown-all-local-services.sh20160827-1221-jy35d0	2016-08-27 22:04:32.570568131 +0000
+           @@ -1 +1,88 @@
+           +#!/bin/bash
+           +
+           +really_stop() 
+           +{
+           +  echo -n "Do you really want to shutdown all the Hops services running on this server? (y/n) "
+           +  read ACCEPT
+           +  case $ACCEPT in
+           +   y | Y)
+           +      ;;
+           +   n | N)
+           +      exit 1
+           +      ;;
+           +    *)
+           +      echo ""
+           +      echo "Please enter 'y' or 'n'." 
+           +      really_stop
+           +      ;;
+           +   esac
+           +}
+           +really_stop
+           +
+           +#supress perl warnings
+           +export LC_CTYPE=en_US.UTF-8
+           +export LC_ALL=en_US.UTF-8
+           +
+           +stop()
+           +{
+           +if [[ $services == *"$active"* ]] ; then
+           + sudo /var/lib/kagent/bin/status-service.sh $active > /dev/null
+           + if [ $? -eq 0 ] ; then
+           +   echo -e "Stopping ${active} ...."
+           +   sudo service $active stop
+           +   if [ $? -ne 0 ] ; then 
+           +     echo -e "\e[31mProblem stopping $active \e[0m"
+           +   else 
+           +     echo -e "\e[32mStopped $active \e[0m"
+           +   fi
+           + else
+           +   echo -e "$active was already \e[31mstopped \e[0m"
+           + fi
+           +fi
+           +
+           +}
+           +
+           +
+           +# Check which services are installed on this server
+           +services=$(grep role /var/lib/kagent/services | perl -p -e "s/role = //g" | perl -p -e "s/\n/ /g") 2>&1 > /dev/null
+           +services="kagent $services glassfish-domain1"
+           +
+           +echo -e ""
+           +
+           +# Shut down the services in the correct order
+           +
+           +active="kagent"
+           +stop
+           +active="historyserver"
+           +stop
+           +active="sparkhistoryserver"
+           +stop
+           +active="elasticsearch-hopsworks"
+           +stop
+           +active="livy"
+           +stop
+           +active="epipe"
+           +stop
+           +active="zookeeper"
+           +stop
+           +active="kafka"
+           +stop
+           +active="drelephant"
+           +stop
+           +active="namenode"
+           +stop
+           +active="datanode"
+           +stop
+           +active="resourcemanager"
+           +stop
+           +active="nodemanager"
+           +stop
+           +active="ndb_mgmd"
+           +stop
+           +active="ndbmtd"
+           +stop
+           +active="mysqld"
+           +stop
+           +active="glassfish-domain1"
+           +stop
+           - change mode from '' to '0740'
+           - change owner from '' to 'kagent'
+           - change group from '' to 'kagent'
+         * template[/var/lib/kagent/bin/status-all-local-services.sh] action create
+           - create new file /var/lib/kagent/bin/status-all-local-services.sh
+           - update content in file /var/lib/kagent/bin/status-all-local-services.sh from none to fa747f
+           --- /var/lib/kagent/bin/status-all-local-services.sh	2016-08-27 22:04:32.590558130 +0000
+           +++ /var/lib/kagent/bin/.chef-status-all-local-services.sh20160827-1221-1g6yqhi	2016-08-27 22:04:32.590558130 +0000
+           @@ -1 +1,62 @@
+           +#!/bin/bash
+           +
+           +#supress perl warnings
+           +export LC_CTYPE=en_US.UTF-8
+           +export LC_ALL=en_US.UTF-8
+           +
+           +status()
+           +{
+           +if [[ $services == *"$active"* ]] ; then
+           + sudo service $active status 2>&1 > /dev/null
+           + if [ $? -eq 0 ] ; then
+           +   echo -e "$active \e[32mrunning \e[0m"
+           + else
+           +   echo -e "$active  \e[31mstopped \e[0m"
+           + fi
+           +fi
+           +
+           +}
+           +
+           +
+           +# Check which services are installed on this server
+           +services=$(grep role /var/lib/kagent/services | perl -p -e "s/role = //g" | perl -p -e "s/\n/ /g") 2>&1 > /dev/null
+           +services="kagent $services glassfish-domain1"
+           +
+           +echo -e ""
+           +# Shut down the services in the correct order
+           +
+           +active="kagent"
+           +status
+           +active="historyserver"
+           +status
+           +active="sparkhistoryserver"
+           +status
+           +active="elasticsearch-hopsworks"
+           +status
+           +active="livy"
+           +status
+           +active="epipe"
+           +status
+           +active="zookeeper"
+           +status
+           +active="kafka"
+           +status
+           +active="drelephant"
+           +status
+           +active="namenode"
+           +status
+           +active="datanode"
+           +status
+           +active="resourcemanager"
+           +status
+           +active="nodemanager"
+           +status
+           +active="ndb_mgmd"
+           +status
+           +active="ndbmtd"
+           +status
+           +active="mysqld"
+           +status
+           +active="glassfish-domain1"
+           +status
+           - change mode from '' to '0740'
+           - change owner from '' to 'kagent'
+           - change group from '' to 'kagent'
+         * template[/var/lib/kagent/keystore.sh] action create
+           - create new file /var/lib/kagent/keystore.sh
+           - update content in file /var/lib/kagent/keystore.sh from none to f05e81
+           --- /var/lib/kagent/keystore.sh	2016-08-27 22:04:32.598554131 +0000
+           +++ /var/lib/kagent/.chef-keystore.sh20160827-1221-1wywbv0	2016-08-27 22:04:32.598554131 +0000
+           @@ -1 +1,26 @@
+           +#!/bin/bash
+           +set -e
+           +cd /var/lib/kagent-certs
+           +
+           +if [ -e "ca_pub.pem" ] && [ -e "priv.key" ] && [ -e "pub.pem" ] ; then
+           +	KEYSTOREPW=adminpw
+           +
+           +	openssl pkcs12 -export -in pub.pem -inkey priv.key -out cert_and_key.p12 -name default-ubuntu-1404 -CAfile ca_pub.pem -caname root -password pass:$KEYSTOREPW
+           +	keytool -importkeystore -destkeystore node_server_keystore.jks -srckeystore cert_and_key.p12 -srcstoretype PKCS12 -alias default-ubuntu-1404 -srcstorepass $KEYSTOREPW -deststorepass $KEYSTOREPW -destkeypass $KEYSTOREPW
+           +	keytool -import -noprompt -trustcacerts -alias CARoot -file ca_pub.pem -keystore node_server_keystore.jks -srcstorepass $KEYSTOREPW -deststorepass $KEYSTOREPW -destkeypass $KEYSTOREPW
+           +	keytool -import -noprompt -trustcacerts -alias CARoot -file ca_pub.pem -keystore node_server_truststore.jks -srcstorepass $KEYSTOREPW -deststorepass $KEYSTOREPW -destkeypass $KEYSTOREPW
+           +	cp node_server_keystore.jks "/var/lib/kagent-certs/keystores/node_server_keystore.jks"
+           +	cp node_server_truststore.jks "/var/lib/kagent-certs/keystores/node_server_truststore.jks"
+           +	cp node_server_truststore.jks "/var/lib/kagent-certs/keystores/node_client_truststore.jks"
+           +	rm node_server_keystore.jks node_server_truststore.jks cert_and_key.p12 
+           +        chown "root:certs" .
+           +        chown -R "root:certs" /var/lib/kagent-certs/keystores
+           +        chmod 640 /var/lib/kagent-certs/keystores/*
+           +        chmod 750 /var/lib/kagent-certs/keystores
+           +        chown "root:kagent" pub.pem ca_pub.pem priv.key
+           +        chmod 640 pub.pem ca_pub.pem priv.key
+           +else
+           +  exit 1
+           +fi
+           +
+           - change mode from '' to '0700'
+           - change owner from '' to 'kagent'
+           - change group from '' to 'kagent'
+         * template[/var/lib/kagent/config.ini] action create
+           - create new file /var/lib/kagent/config.ini
+           - update content in file /var/lib/kagent/config.ini from none to 8b6b6d
+           --- /var/lib/kagent/config.ini	2016-08-27 22:04:32.606550131 +0000
+           +++ /var/lib/kagent/.chef-config.ini20160827-1221-7adlsa	2016-08-27 22:04:32.606550131 +0000
+           @@ -1 +1,38 @@
+           +[server]
+           +url = http://[#<MonoLogger:0x00000003960ca0 @progname=nil, @level=2, @default_formatter=#<Logger::Formatter:0x00000003960c50 @datetime_format=nil>, @formatter=#<Mixlib::Log::Formatter:0x00000003960660 @datetime_format=nil>, @logdev=#<MonoLogger::LocklessLogDevice:0x00000003960b60 @shift_size=nil, @shift_age=nil, @filename=nil, @dev=#<IO:<STDOUT>>>>]/hopsworks
+           +path-login: /api/auth/login
+           +path-register: /api/agentservice/register
+           +path-heartbeat: /api/agentresource/heartbeat
+           +path-alert: /api/agentresource/alert
+           +username = agent@hops.io
+           +password = admin
+           +
+           +[agent]
+           +host-id = 10.0.2.15
+           +restport = 8090
+           +heartbeat-interval = 3
+           +watch-interval = 2
+           +pid-file = /var/lib/kagent/kagent.pid
+           +logging-level = INFO
+           +max-log-size = 10000000
+           +username = kagent@hops.io
+           +public-ip = 10.0.2.15
+           +private-ip = 10.0.2.15
+           +mysql-socket = /tmp/mysql.sock
+           +hostname = default-ubuntu-1404
+           +network-interface = eth0
+           +group-name = 
+           +
+           +
+           +
+           +# 
+           +# 
+           +# cpu- =  
+           +# 
+           +# 
+           +# 
+           +# 
+           +# gpu- =  
+           +# 
+           +# 
+           - change mode from '' to '0600'
+           - change owner from '' to 'kagent'
+           - change group from '' to 'kagent'
+         * execute[service kagent stop] action run
+           - execute service kagent stop
+         * execute[rm -f /var/lib/kagent/kagent.pid] action run
+           - execute rm -f /var/lib/kagent/kagent.pid
+         * service[kagent] action enable
+           - enable service service[kagent]
+         * service[kagent] action restart
+           - restart service service[kagent]
+       
+       Running handlers:
+       Running handlers complete
+       
+       Deprecated features used!
+         method access to node attributes (node.foo.bar) is deprecated and will be removed in Chef 13, please use bracket syntax (node["foo"]["bar"]) at 148 locations:
+           - /tmp/kitchen/cache/cookbooks/kagent/attributes/default.rb:7:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/attributes/default.rb:10:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/attributes/default.rb:11:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/attributes/default.rb:15:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/attributes/default.rb:48:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/attributes/default.rb:56:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/attributes/default.rb:57:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/attributes/default.rb:63:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/resources/config.rb:3:in `class_from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:3:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:40:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:42:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:45:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:47:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:50:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:51:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:53:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:57:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:60:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:62:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:66:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:68:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:76:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:77:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:85:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:86:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:94:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:95:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:103:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:104:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:111:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:112:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:136:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:137:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:145:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:146:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:154:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:155:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:211:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:212:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:213:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:219:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:220:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:221:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:228:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:230:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:233:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:234:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:235:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:236:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:241:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:242:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:243:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:249:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:250:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:251:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:257:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:258:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:259:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:265:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:266:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:267:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:273:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:274:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:275:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:282:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:283:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:284:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:291:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:292:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:298:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:299:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:306:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/libraries/default.rb:21:in `my_private_ip'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:308:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:311:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:316:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:330:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:336:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:338:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:339:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:344:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:346:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:347:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:354:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:356:in `block (2 levels) in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:357:in `block (2 levels) in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:364:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:366:in `block (2 levels) in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:367:in `block (2 levels) in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:373:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:376:in `block (2 levels) in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:388:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:389:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:390:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:391:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:392:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:393:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:394:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:395:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:402:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:410:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/default.rb:3:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/default.rb:5:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/default.rb:10:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/default.rb:49:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/default.rb:50:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/libraries/default.rb:11:in `my_public_ip'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/default.rb:63:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/default.rb:74:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/default.rb:78:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/default.rb:87:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/default.rb:89:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/default.rb:90:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/default.rb:94:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/default.rb:96:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/default.rb:97:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/default.rb:101:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/default.rb:103:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/default.rb:104:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/default.rb:114:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/default.rb:116:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/default.rb:117:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/default.rb:120:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/default.rb:121:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/default.rb:126:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/default.rb:128:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/default.rb:129:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/default.rb:132:in `block in from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/default.rb:142:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/default.rb:148:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/default.rb:150:in `from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/recipes/default.rb:162:in `from_file'
+           - (erubis):62:in `block in evaluate'
+           - (erubis):63:in `block in evaluate'
+           - (erubis):64:in `block in evaluate'
+           - (erubis):164:in `block in evaluate'
+           - (erubis):165:in `block in evaluate'
+           - (erubis):166:in `block in evaluate'
+           - /tmp/kitchen/cache/cookbooks/kagent/providers/tf.rb:3:in `block in class_from_file'
+           - /tmp/kitchen/cache/cookbooks/kagent/providers/tf.rb:4:in `block in class_from_file'
+           - (erubis):34:in `block in evaluate'
+           - (erubis):47:in `block in evaluate'
+           - (erubis):22:in `block in evaluate'
+           - (erubis):16:in `block in evaluate'
+           - (erubis):17:in `block in evaluate'
+           - (erubis):20:in `block in evaluate'
+           - (erubis):29:in `block in evaluate'
+         Cloning resource attributes for group[kagent] from prior resource (CHEF-3694)
+       Previous group[kagent]: /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:40:in `from_file'
+       Current  group[kagent]: /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:60:in `from_file' at 1 location:
+           - /tmp/kitchen/cache/cookbooks/poise/files/halite_gem/poise/helpers/resource_cloning.rb:58:in `emit_cloned_resource_warning'
+         Cloning resource attributes for group[certs] from prior resource (CHEF-3694)
+       Previous group[certs]: /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:45:in `from_file'
+       Current  group[certs]: /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:66:in `from_file' at 1 location:
+           - /tmp/kitchen/cache/cookbooks/poise/files/halite_gem/poise/helpers/resource_cloning.rb:58:in `emit_cloned_resource_warning'
+         Cloning resource attributes for link[/var/lib/kagent] from prior resource (CHEF-3694)
+       Previous link[/var/lib/kagent]: /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:228:in `from_file'
+       Current  link[/var/lib/kagent]: /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:233:in `from_file' at 1 location:
+           - /tmp/kitchen/cache/cookbooks/poise/files/halite_gem/poise/helpers/resource_cloning.rb:58:in `emit_cloned_resource_warning'
+         Cloning resource attributes for hostsfile_entry[10.0.2.15] from prior resource (CHEF-3694)
+       Previous hostsfile_entry[10.0.2.15]: /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:310:in `from_file'
+       Current  hostsfile_entry[10.0.2.15]: /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:315:in `from_file' at 1 location:
+           - /tmp/kitchen/cache/cookbooks/poise/files/halite_gem/poise/helpers/resource_cloning.rb:58:in `emit_cloned_resource_warning'
+         Cloning resource attributes for kagent_tf[0] from prior resource (CHEF-3694)
+       Previous kagent_tf[0]: /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:403:in `block in from_file'
+       Current  kagent_tf[0]: /tmp/kitchen/cache/cookbooks/kagent/recipes/install.rb:411:in `block in from_file' at 1 location:
+           - /tmp/kitchen/cache/cookbooks/poise/files/halite_gem/poise/helpers/resource_cloning.rb:58:in `emit_cloned_resource_warning'
+       
+       Chef Client finished, 62/65 resources updated in 01 minutes 18 seconds
+       Finished converging <default-ubuntu-1404> (2m13.24s).
+-----> Kitchen is finished. (3m9.56s)
