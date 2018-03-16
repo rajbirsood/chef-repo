@@ -92,3 +92,7 @@ default['ntp']['install']                            = "false"
 
 #node.normal.["ntp"]["peers"]                               = ['time0.int.example.org', 'time1.int.example.org']
 
+
+default["public_ips"]                              = ['10.0.2.15']
+default["private_ips"]                             = ['10.0.2.15']
+default["gateway_ips"]                             = ['10.0.2.2']

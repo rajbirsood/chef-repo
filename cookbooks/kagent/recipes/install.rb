@@ -1,6 +1,6 @@
 # ubuntu python-mysqldb package install only works if we first run "apt-get update; apt-get upgrade"
 
-case node.platform_family
+case node['platform_family']
 when "debian"
   bash "apt_update_install_build_tools" do
     user "root"
@@ -37,35 +37,36 @@ include_recipe "poise-python"
 #include_recipe "openssl::upgrade"
 
 
-group node.kagent.group do
+group node["kagent"]["group"] do
   action :create
-  not_if "getent group #{node.kagent.group}"
+  not_if "getent group #{node["kagent"]["group"]}"
 end
 
-group node.kagent.certs_group do
+group node["kagent"]["certs_group"] do
   action :create
-  not_if "getent group #{node.kagent.certs_group}"
+  not_if "getent group #{node["kagent"]["certs_group"]}"
 end
 
-user node.kagent.user do
-  gid node.kagent.group
-  supports :manage_home => true
-  home "/home/#{node.kagent.user}"
+user node["kagent"]["user"] do
+  gid node["kagent"]["group"]
+  #supports :manage_home => true
+  manage_home true
+  home "/home/#{node["kagent"]["user"]}"
   action :create
   system true
   shell "/bin/bash"
-  not_if "getent passwd #{node.kagent.user}"
+  not_if "getent passwd #{node["kagent"]["user"]}"
 end
 
-group node.kagent.group do
+group node["kagent"]["group"] do
   action :modify
-  members ["#{node.kagent.user}"]
+  members ["#{node["kagent"]["user"]}"]
   append true
 end
 
-group node.kagent.certs_group do
+group node["kagent"]["certs_group"] do
   action :modify
-  members ["#{node.kagent.user}"]
+  members ["#{node["kagent"]["user"]}"]
   append true
 end
 
@@ -73,8 +74,8 @@ end
 inifile_gem = "inifile-2.0.2.gem"
 cookbook_file "/tmp/#{inifile_gem}" do
   source "#{inifile_gem}"
-  owner node.kagent.user
-  group node.kagent.user
+  owner node["kagent"]["user"]
+  group node["kagent"]["user"]
   mode 0755
   action :create_if_missing
 end
@@ -82,8 +83,8 @@ end
 requests="requests-1.0.3"
 cookbook_file "/tmp/#{requests}.tar.gz" do
   source "#{requests}.tar.gz"
-  owner node.kagent.user
-  group node.kagent.user
+  owner node["kagent"]["user"]
+  group node["kagent"]["user"]
   mode 0755
   action :create_if_missing
 end
@@ -91,8 +92,8 @@ end
 bottle="bottle-0.11.4"
 cookbook_file "/tmp/#{bottle}.tar.gz" do
   source "#{bottle}.tar.gz"
-  owner node.kagent.user
-  group node.kagent.user
+  owner node["kagent"]["user"]
+  group node["kagent"]["user"]
   mode 0755
   action :create_if_missing
 end
@@ -100,16 +101,16 @@ end
 cherry="CherryPy-3.2.2"
 cookbook_file "/tmp/#{cherry}.tar.gz" do
   source "#{cherry}.tar.gz"
-  owner node.kagent.user
-  group node.kagent.user
+  owner node["kagent"]["user"]
+  group node["kagent"]["user"]
   mode 0755
 end
 
 openSsl="pyOpenSSL-0.13"
 cookbook_file "/tmp/#{openSsl}.tar.gz" do
   source "#{openSsl}.tar.gz"
-  owner node.kagent.user
-  group node.kagent.user
+  owner node["kagent"]["user"]
+  group node["kagent"]["user"]
   mode 0755
   action :create_if_missing
 end
@@ -133,8 +134,8 @@ end
 netifaces="netifaces-0.8"
 cookbook_file "/tmp/#{netifaces}.tar.gz" do
   source "#{netifaces}.tar.gz"
-  owner node.kagent.user
-  group node.kagent.user
+  owner node["kagent"]["user"]
+  group node["kagent"]["user"]
   mode 0755
   action :create_if_missing
 end
@@ -142,8 +143,8 @@ end
 ipy="IPy-0.81"
 cookbook_file "/tmp/#{ipy}.tar.gz" do
   source "#{ipy}.tar.gz"
-  owner node.kagent.user
-  group node.kagent.user
+  owner node["kagent"]["user"]
+  group node["kagent"]["user"]
   mode 0755
   action :create_if_missing
 end
@@ -151,8 +152,8 @@ end
 pexpect="pexpect-2.3"
 cookbook_file "/tmp/#{pexpect}.tar.gz" do
   source "#{pexpect}.tar.gz"
-  owner node.kagent.user
-  group node.kagent.user
+  owner node["kagent"]["user"]
+  group node["kagent"]["user"]
   mode 0755
   action :create_if_missing
 end
@@ -208,39 +209,39 @@ gem_package "inifile" do
   action :install
 end
 
-directory node.kagent.home do
-  owner node.kagent.user
-  group node.kagent.group
+directory node["kagent"]["home"] do
+  owner node["kagent"]["user"]
+  group node["kagent"]["group"]
   mode "755"
   action :create
   recursive true
 end
 
-directory node.kagent.certs_dir do
-  owner node.kagent.user
-  group node.kagent.certs_group
+directory node["kagent"]["certs_dir"] do
+  owner node["kagent"]["user"]
+  group node["kagent"]["certs_group"]
   mode "750"
   action :create
   recursive true
 end
 
 
-link node.kagent.base_dir do
+link ["node"]["kagent"]["base_dir"] do
   action :delete
-  only_if "test -L #{node.kagent.base_dir}"
+  only_if "test -L #{["node"]["kagent"]["base_dir"]}"
 end
 
-link node.kagent.base_dir do
-  owner node.kagent.user
-  group node.kagent.group
+link ["node"]["kagent"]["base_dir"] do
+  owner node["kagent"]["user"]
+  group node["kagent"]["group"]
   to node.kagent.home
 end
 
 
 
-directory "#{node.kagent.base_dir}/bin" do
-  owner node.kagent.user
-  group node.kagent.group
+directory "#{["node"]["kagent"]["base_dir"]}/bin" do
+  owner node["kagent"]["user"]
+  group node["kagent"]["group"]
   mode "755"
   action :create
   recursive true
@@ -248,22 +249,22 @@ end
 
 
 directory node.kagent.keystore_dir do
-  owner node.kagent.user
-  group node.kagent.group
+  owner node["kagent"]["user"]
+  group node["kagent"]["group"]
   mode "755"
   action :create
   recursive true
 end
 
 file node.default.kagent.services do
-  owner node.kagent.user
-  group node.kagent.group
+  owner node["kagent"]["user"]
+  group node["kagent"]["group"]
   mode "755"
   action :create_if_missing
 end
 
 # set_my_hostname
-if node.vagrant === "true" || node.vagrant == true 
+if node["vagrant"] === "true" || node["vagrant"] == true 
     my_ip = my_private_ip()
   case node.platform_family
   when "debian"
@@ -293,47 +294,47 @@ end
 
 
 
-template "#{node.kagent.base_dir}/agent.py" do
+template "#{["node"]["kagent"]["base_dir"]}/agent.py" do
   source "agent.py.erb"
-  owner node.kagent.user
-  group node.kagent.group
+  owner node["kagent"]["user"]
+  group node["kagent"]["group"]
   mode 0710
 end
 
 
 template"#{node.kagent.certs_dir}/csr.py" do
   source "csr.py.erb"
-  owner node.kagent.user
-  group node.kagent.group
+  owner node["kagent"]["user"]
+  group node["kagent"]["group"]
   mode 0710
 end
 
 
 ['start-agent.sh', 'stop-agent.sh', 'restart-agent.sh', 'get-pid.sh'].each do |script|
   Chef::Log.info "Installing #{script}"
-  template "#{node.kagent.base_dir}/bin/#{script}" do
+  template "#{["node"]["kagent"]["base_dir"]}/bin/#{script}" do
     source "#{script}.erb"
-    owner node.kagent.user
-    group node.kagent.group
+    owner node["kagent"]["user"]
+    group node["kagent"]["group"]
     mode 0750
   end
 end 
 
 ['services'].each do |conf|
   Chef::Log.info "Installing #{conf}"
-  template "#{node.kagent.base_dir}/#{conf}" do
+  template "#{["node"]["kagent"]["base_dir"]}/#{conf}" do
     source "#{conf}.erb"
-    owner node.kagent.user
-    group node.kagent.group
+    owner node["kagent"]["user"]
+    group node["kagent"]["group"]
     mode 0644
   end
 end
 
 ['start-service.sh', 'stop-service.sh', 'restart-service.sh', 'status-service.sh'].each do |script|
-  template  "#{node.kagent.base_dir}/bin/#{script}" do
+  template  "#{["node"]["kagent"]["base_dir"]}/bin/#{script}" do
     source "#{script}.erb"
     owner "root"
-    group node.kagent.group
+    group node["kagent"]["group"]
     mode 0750
   end
 end
@@ -345,14 +346,14 @@ template "/etc/sudoers.d/kagent" do
   group "root"
   mode "0440"
   variables({
-                :user => node.kagent.user,
-                :start => "#{node.kagent.base_dir}/bin/start-service.sh",
-                :stop => "#{node.kagent.base_dir}/bin/stop-service.sh",
-                :restart => "#{node.kagent.base_dir}/bin/restart-service.sh",
-                :status => "#{node.kagent.base_dir}/bin/status-service.sh",
-                :startall => "#{node.kagent.base_dir}/bin/start-all-local-services.sh",
-                :stopall => "#{node.kagent.base_dir}/bin/shutdown-all-local-services.sh",
-                :statusall => "#{node.kagent.base_dir}/bin/status-all-local-services.sh"
+                :user => node["kagent"]["user"],
+                :start => "#{["node"]["kagent"]["base_dir"]}/bin/start-service.sh",
+                :stop => "#{["node"]["kagent"]["base_dir"]}/bin/stop-service.sh",
+                :restart => "#{["node"]["kagent"]["base_dir"]}/bin/restart-service.sh",
+                :status => "#{["node"]["kagent"]["base_dir"]}/bin/status-service.sh",
+                :startall => "#{["node"]["kagent"]["base_dir"]}/bin/start-all-local-services.sh",
+                :stopall => "#{["node"]["kagent"]["base_dir"]}/bin/shutdown-all-local-services.sh",
+                :statusall => "#{["node"]["kagent"]["base_dir"]}/bin/status-all-local-services.sh"
               })
   action :create
 end  
