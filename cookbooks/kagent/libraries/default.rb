@@ -152,8 +152,8 @@ module Kagent
     
     def ndb_connectstring()
       connectString = ""
-      for n in node['ndb']['mgmd']['private_ips']
-        connectString += "#{n}:#{node['ndb']['mgmd']['port']},"
+      for n in node["ndb"]["mgmd"]["private_ips"]
+        connectString += "#{n}:#{node["ndb"]["mgmd"]["port"]},"
       end
       # Remove the last ','
       connectString = connectString.chop
