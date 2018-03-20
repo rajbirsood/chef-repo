@@ -1,7 +1,7 @@
 name "ndb"
 description "ndb mysql"  
-#run_list "recipe[kagent::install]","recipe[ndb::install]","recipe[ndb::mgmd]","recipe[ndb::ndbd]","recipe[ndb::mysqld]","recipe[ndb::memcached]","recipe[ndb::bench]"
-run_list "recipe[ndb::install]","recipe[ndb::mgmd]","recipe[ndb::ndbd]","recipe[ndb::mysqld]","recipe[ndb::memcached]","recipe[ndb::bench]"
+run_list "recipe[kagent::install]","recipe[ndb::install]","recipe[ndb::mgmd]","recipe[ndb::ndbd]","recipe[ndb::mysqld]","recipe[ndb::memcached]","recipe[ndb::bench]"
+#run_list "recipe[ndb::install]","recipe[ndb::mgmd]","recipe[ndb::ndbd]","recipe[ndb::mysqld]","recipe[ndb::memcached]","recipe[ndb::bench]"
 default_attributes( "ndb" => {
      "user" => "mysql",
       "group" => "mysql",
