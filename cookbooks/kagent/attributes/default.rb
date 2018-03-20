@@ -61,8 +61,8 @@ default['kagent']['hostid']                 = 100
 
 default['kagent']['keystore_dir']           = node['kagent']['certs_dir'] + "/keystores"
 
-default['kagent']['public_ips']             = ['10.0.2.15']
-default['kagent']['private_ips']            = ['10.0.2.15']
+default['kagent']['public_ips']             = ['10.0.1.124']
+default['kagent']['private_ips']            = ['10.0.1.124']
 default['kagent']['allow_ssh_access']       = "false"
 
 
@@ -93,6 +93,6 @@ default['ntp']['install']                            = "false"
 #node.normal.["ntp"]["peers"]                               = ['time0.int.example.org', 'time1.int.example.org']
 
 
-default["public_ips"]                              = ['10.0.2.15']
-default["private_ips"]                             = ['10.0.2.15']
+default["public_ips"]                              = ['10.0.1.124']
+default["private_ips"]                             = ['10.0.1.124']
 default["gateway_ips"]                             = ['10.0.2.2']

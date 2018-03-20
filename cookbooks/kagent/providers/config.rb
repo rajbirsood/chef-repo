@@ -1,6 +1,7 @@
 action :add do
-  ini_file = IniFile.load(node.kagent.services, :comment => ';#')
-  cluster = "#{node.kagent.cluster}"
+  ini_file = IniFile.load(node["kagent"]["services"], :comment => ';#')
+ # ini_file = IniFile.load("#{new_resource.services_file}", :comment => ';#') #
+  cluster = "#{node["kagent"]["cluster"]}"
   service = "#{new_resource.service}"
   role = "#{new_resource.role}"
 
@@ -12,6 +13,8 @@ action :add do
 # The agent.py program will use start/stop/restart/status the service by calling, e.g., 
 # systemctl start ROLENAME
 #
+
+  Chef::Log.info "ini_file: #{node["kagent"]["services"]}"
   if cluster.include?("-") || service.include?("-") 
     raise "Invalid cluster or service name. Cannot contain  '-'" 
   end
