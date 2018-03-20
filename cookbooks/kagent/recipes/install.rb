@@ -409,4 +409,4 @@ end
 #      end
 # end
 
-include_recipe "kagent::anaconda"
+#include_recipe "kagent::anaconda"

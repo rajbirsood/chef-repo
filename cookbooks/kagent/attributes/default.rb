@@ -96,3 +96,6 @@ default['ntp']['install']                            = "false"
 default["public_ips"]                              = ['10.0.1.124']
 default["private_ips"]                             = ['10.0.1.124']
 default["gateway_ips"]                             = ['10.0.2.2']
+
+default["kagent"][:default][:public_ips]              = ['10.0.1.124']
+default["kagent"][:default][:private_ips]             = ['10.0.1.124']
